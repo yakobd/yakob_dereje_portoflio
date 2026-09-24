@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import Button from "@/components/ui/Button";
 import Pill from "@/components/ui/Pill";
 import { caseStudies, getCaseStudy } from "@/lib/data/case-studies";
+import { siteName } from "@/lib/site";
 
 type CaseStudyPageProps = {
   params: { slug: string };
@@ -23,9 +24,20 @@ function truncate(text: string, maxLength = 155) {
 export function generateMetadata({ params }: CaseStudyPageProps): Metadata {
   const study = getCaseStudy(params.slug);
   if (!study) return {};
+  const description = truncate(study.problem);
+  const url = `/work/${study.slug}`;
   return {
-    title: `${study.title} — Case Study`,
-    description: truncate(study.problem),
+    title: study.title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      siteName,
+      title: study.title,
+      description,
+      url,
+    },
+    twitter: { card: "summary", title: study.title, description },
   };
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
+import { siteDescription, siteName, siteTitle, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 // Fraunces is a variable font: loading it without fixed weights keeps the
@@ -20,10 +21,26 @@ const plexSans = IBM_Plex_Sans({
   variable: "--font-plex-sans",
 });
 
-// TODO: replace with real site metadata.
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Personal portfolio",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteTitle,
+    template: `%s — ${siteName}`,
+  },
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    siteName,
+    title: siteTitle,
+    description: siteDescription,
+    url: "/",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({
