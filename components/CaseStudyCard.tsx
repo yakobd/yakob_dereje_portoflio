@@ -21,7 +21,7 @@ export default function CaseStudyCard({
     >
       <div
         className={`relative flex h-[140px] items-center justify-center ${lead ? "md:h-auto md:min-h-[320px]" : ""}`}
-        style={{ backgroundColor: study.coverColor }}
+        style={{ backgroundColor: study.heroColor }}
       >
         <span className="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-xs font-medium text-foreground">
           {study.tag}
