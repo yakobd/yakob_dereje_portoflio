@@ -2,23 +2,47 @@ import type { CaseStudy } from "@/lib/data/case-studies";
 import Card from "./ui/Card";
 import Pill from "./ui/Pill";
 
-export default function CaseStudyCard({ study }: { study: CaseStudy }) {
+type CaseStudyCardProps = {
+  study: CaseStudy;
+  /** Full-width card with the cover beside the content (40/60) on desktop. */
+  lead?: boolean;
+  className?: string;
+};
+
+export default function CaseStudyCard({
+  study,
+  lead = false,
+  className = "",
+}: CaseStudyCardProps) {
   return (
-    <Card href={`/work/${study.slug}`} className="group h-full overflow-hidden">
+    <Card
+      href={`/work/${study.slug}`}
+      className={`group h-full overflow-hidden ${lead ? "md:grid md:grid-cols-[2fr_3fr]" : ""} ${className}`.trim()}
+    >
       <div
-        className="relative flex h-[140px] items-center justify-center"
+        className={`relative flex h-[140px] items-center justify-center ${lead ? "md:h-auto md:min-h-[320px]" : ""}`}
         style={{ backgroundColor: study.coverColor }}
       >
         <span className="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-xs font-medium text-foreground">
           {study.tag}
         </span>
-        <span className="font-heading text-4xl font-medium tracking-tight text-surface">
+        <span
+          className={`font-heading text-4xl font-medium tracking-tight text-surface ${lead ? "md:text-7xl" : ""}`}
+        >
           {study.initials}
         </span>
       </div>
-      <div className="flex flex-col gap-4 p-6">
-        <h3 className="text-xl font-medium tracking-tight">{study.title}</h3>
-        <p className="text-muted">{study.summary}</p>
+      <div
+        className={`flex flex-col gap-4 p-6 ${lead ? "md:justify-center md:gap-5 md:p-10 lg:p-12" : ""}`}
+      >
+        <h3
+          className={`text-xl font-medium tracking-tight ${lead ? "md:text-3xl md:leading-tight" : ""}`}
+        >
+          {study.title}
+        </h3>
+        <p className={`text-muted ${lead ? "md:text-lg md:leading-relaxed" : ""}`}>
+          {study.summary}
+        </p>
         <div className="flex flex-wrap gap-2">
           {study.stack.map((tech) => (
             <Pill key={tech}>{tech}</Pill>

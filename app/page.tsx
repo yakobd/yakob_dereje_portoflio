@@ -119,8 +119,13 @@ export default function HomePage() {
           title="Systems I've built end to end."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {caseStudies.map((study) => (
-            <CaseStudyCard key={study.slug} study={study} />
+          {caseStudies.map((study, index) => (
+            <CaseStudyCard
+              key={study.slug}
+              study={study}
+              lead={index === 0}
+              className={index === 0 ? "md:col-span-2" : ""}
+            />
           ))}
         </div>
       </Section>
