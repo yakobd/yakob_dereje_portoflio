@@ -13,6 +13,7 @@ const config: Config = {
         foreground: "#221F1C", // near-black
         surface: "#FFFFFF", // alternating sections
         border: "#E7E0D6",
+        "border-strong": "#C9BFB0", // button outlines
         muted: "#6B655D", // secondary text
         subtle: "#8A8377", // tertiary text
         chip: "#F0EBE2", // tag / pill background

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Sans } from "next/font/google";
+import Footer from "@/components/Footer";
+import Nav from "@/components/Nav";
 import "./globals.css";
 
 // Fraunces is a variable font: loading it without fixed weights keeps the
@@ -30,9 +32,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${plexSans.variable}`}>
-      <body className="bg-background font-sans text-foreground antialiased">
-        {children}
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${plexSans.variable} scroll-pt-16 scroll-smooth`}
+    >
+      <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
+        <Nav />
+        <div className="flex-1">{children}</div>
+        <Footer />
       </body>
     </html>
   );
