@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MobileMenu from "./MobileMenu";
 
 // Prefixed with "/" so the anchors also work from case study pages.
 const links = [
@@ -19,7 +20,7 @@ export default function Nav() {
           Yakob Dereje
         </Link>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-3 md:gap-8">
           <ul className="hidden items-center gap-8 md:flex">
             {links.map((link) => (
               <li key={link.href}>
@@ -38,6 +39,7 @@ export default function Nav() {
           >
             Contact
           </Link>
+          <MobileMenu links={links} />
         </div>
       </nav>
     </header>
