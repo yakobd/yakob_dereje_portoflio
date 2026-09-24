@@ -35,7 +35,7 @@ export default function Nav() {
           </ul>
           <Link
             href="/#contact"
-            className="rounded-full bg-accent px-5 py-2 text-sm font-medium text-background transition-colors hover:bg-accent/90"
+            className="rounded-full bg-accent-strong px-5 py-2 text-sm font-medium text-background transition hover:brightness-95"
           >
             Contact
           </Link>

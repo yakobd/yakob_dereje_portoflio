@@ -48,7 +48,7 @@ export default function CaseStudyCard({
             <Pill key={tech}>{tech}</Pill>
           ))}
         </div>
-        <span className="text-sm font-medium text-accent">
+        <span className="text-sm font-medium text-accent-strong">
           View case study{" "}
           <span
             aria-hidden="true"

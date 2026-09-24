@@ -18,7 +18,7 @@ import { skillGroups } from "@/lib/data/skills";
 
 export default function HomePage() {
   return (
-    <main>
+    <>
       {/* Hero */}
       <Section id="top">
         <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-medium text-muted">
@@ -233,7 +233,7 @@ export default function HomePage() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-foreground underline decoration-border-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+                className="text-sm font-medium text-foreground underline decoration-border-strong underline-offset-4 transition-colors hover:text-accent-strong hover:decoration-accent-strong"
               >
                 {social.label}
               </a>
@@ -241,6 +241,6 @@ export default function HomePage() {
           ))}
         </ul>
       </Section>
-    </main>
+    </>
   );
 }

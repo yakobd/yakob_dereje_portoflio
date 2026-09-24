@@ -116,7 +116,7 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
                   <Link
                     href={link.href}
                     onClick={() => close()}
-                    className="block px-6 py-4 text-base font-medium text-foreground transition-colors hover:bg-chip focus-visible:bg-chip focus-visible:outline-none"
+                    className="block px-6 py-4 text-base font-medium text-foreground transition-colors hover:bg-chip focus-visible:bg-chip focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
                   >
                     {link.label}
                   </Link>

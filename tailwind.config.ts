@@ -15,9 +15,10 @@ const config: Config = {
         border: "#E7E0D6",
         "border-strong": "#C9BFB0", // button outlines
         muted: "#6B655D", // secondary text
-        subtle: "#8A8377", // tertiary text
+        subtle: "#756F65", // tertiary text (darkened from #8A8377 for AA contrast)
         chip: "#F0EBE2", // tag / pill background
-        accent: "#B5651D", // terracotta, primary brand accent
+        accent: "#B5651D", // terracotta, primary brand accent (large text, fills, borders)
+        "accent-strong": "#A65E1D", // accent for small text and filled buttons (AA)
       },
       fontFamily: {
         heading: ["var(--font-fraunces)", ...defaultTheme.fontFamily.serif],

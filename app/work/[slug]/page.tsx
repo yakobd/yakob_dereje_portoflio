@@ -73,7 +73,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
   if (!study) notFound();
 
   return (
-    <main>
+    <>
       <div className="px-6 pb-8 pt-8 md:px-16">
         <Link
           href="/"
@@ -86,15 +86,20 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
       {/* Hero */}
       <header
         className="px-6 py-16 text-surface md:px-16 md:py-24"
-        style={{ backgroundColor: study.heroColor }}
+        style={{
+          backgroundColor: study.heroColor,
+          // 15% foreground tint keeps white body text at AA on every hero color.
+          backgroundImage:
+            "linear-gradient(rgba(34, 31, 28, 0.15), rgba(34, 31, 28, 0.15))",
+        }}
       >
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-surface/75">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-surface/90">
           {study.heroTag}
         </p>
         <h1 className="mt-4 max-w-4xl text-balance text-4xl font-normal leading-[1.08] tracking-tight md:text-6xl">
           {study.title}
         </h1>
-        <p className="mt-8 max-w-3xl text-lg leading-relaxed text-surface/85">
+        <p className="mt-8 max-w-3xl text-lg leading-relaxed text-surface/90">
           {study.problem}
         </p>
         <a
@@ -186,6 +191,6 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           </Button>
         </div>
       </div>
-    </main>
+    </>
   );
 }

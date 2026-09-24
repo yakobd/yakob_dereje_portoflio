@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main>
+    <>
       <Section className="flex min-h-[60vh] flex-col items-center justify-center text-center">
         <Eyebrow>404</Eyebrow>
         <h1 className="mt-4 text-balance text-4xl font-normal tracking-tight md:text-6xl">
@@ -26,6 +26,6 @@ export default function NotFound() {
           </Button>
         </div>
       </Section>
-    </main>
+    </>
   );
 }

@@ -54,8 +54,16 @@ export default function RootLayout({
       className={`${fraunces.variable} ${plexSans.variable} scroll-pt-16 scroll-smooth`}
     >
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
+        <a
+          href="#main-content"
+          className="sr-only z-[60] rounded-full bg-foreground text-sm font-medium text-background focus:not-sr-only focus:fixed focus:px-5 focus:py-3 focus:left-4 focus:top-3 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent"
+        >
+          Skip to content
+        </a>
         <Nav />
-        <div className="flex-1">{children}</div>
+        <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

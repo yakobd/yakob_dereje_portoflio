@@ -12,4 +12,9 @@
     @apply font-heading;
     font-optical-sizing: auto;
   }
+
+  /* Consistent keyboard focus ring; components can override it. */
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-accent;
+  }
 }

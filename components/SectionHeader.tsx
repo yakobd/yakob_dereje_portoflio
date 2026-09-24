@@ -7,7 +7,7 @@ type SectionHeaderProps = {
 
 export function Eyebrow({ children }: { children: string }) {
   return (
-    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-strong">
       {children}
     </p>
   );
