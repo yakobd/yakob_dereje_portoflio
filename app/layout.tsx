@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
+import { MotionProvider } from "@/components/Reveal";
 import { siteDescription, siteName, siteTitle, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -62,7 +63,7 @@ export default function RootLayout({
         </a>
         <Nav />
         <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
-          {children}
+          <MotionProvider>{children}</MotionProvider>
         </main>
         <Footer />
       </body>
