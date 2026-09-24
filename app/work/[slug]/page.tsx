@@ -23,7 +23,7 @@ function truncate(text: string, maxLength = 155) {
 
 export function generateMetadata({ params }: CaseStudyPageProps): Metadata {
   const study = getCaseStudy(params.slug);
-  if (!study) return {};
+  if (!study) return { title: "Page not found" };
   const description = truncate(study.problem);
   const url = `/work/${study.slug}`;
   return {
