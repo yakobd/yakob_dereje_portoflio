@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
+import NavLinks from "./NavLinks";
 import ThemeToggle from "./ThemeToggle";
 
 // Prefixed with "/" so the anchors also work from case study pages.
@@ -22,18 +23,7 @@ export default function Nav() {
         </Link>
 
         <div className="flex items-center gap-3 md:gap-8">
-          <ul className="hidden items-center gap-8 md:flex">
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm font-medium text-muted transition-colors hover:text-foreground"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NavLinks links={links} />
           <ThemeToggle className="-mx-2 hidden md:flex" />
           <Link
             href="/#contact"

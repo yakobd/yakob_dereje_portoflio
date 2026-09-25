@@ -1,6 +1,7 @@
 import CaseStudyCard from "@/components/CaseStudyCard";
 import CertificateGallery from "@/components/CertificateGallery";
 import ContactForm from "@/components/ContactForm";
+import HeroStats from "@/components/HeroStats";
 import ProjectBanner from "@/components/ProjectBanner";
 import ProfilePhoto from "@/components/ProfilePhoto";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
@@ -61,16 +62,7 @@ export default function HomePage() {
                 Get in touch
               </Button>
             </div>
-            <dl className="mt-16 grid gap-8 border-t border-border pt-10 sm:grid-cols-3">
-              {hero.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col">
-                  <dt className="mt-1 text-sm text-muted">{stat.label}</dt>
-                  <dd className="order-first font-heading text-3xl font-normal tracking-tight">
-                    {stat.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <HeroStats stats={hero.stats} />
           </div>
         </div>
       </Section>

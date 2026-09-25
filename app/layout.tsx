@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
+import ScrollProgress from "@/components/ScrollProgress";
 import { MotionProvider } from "@/components/Reveal";
 import { themeInitScript } from "@/lib/theme";
 import { siteDescription, siteName, siteTitle, siteUrl } from "@/lib/site";
@@ -67,6 +68,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <ScrollProgress />
         <Nav />
         <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
           <MotionProvider>{children}</MotionProvider>
