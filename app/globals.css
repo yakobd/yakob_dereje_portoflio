@@ -18,3 +18,24 @@
     @apply outline outline-2 outline-offset-2 outline-accent;
   }
 }
+
+@layer components {
+  /* Faint dot grid behind the hero, fading out toward the edges. */
+  .hero-pattern {
+    background-image: radial-gradient(
+      rgb(34 31 28 / 0.12) 1px,
+      transparent 1.5px
+    );
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 70% at 65% 40%,
+      #000 20%,
+      transparent 75%
+    );
+    mask-image: radial-gradient(
+      ellipse 80% 70% at 65% 40%,
+      #000 20%,
+      transparent 75%
+    );
+  }
+}

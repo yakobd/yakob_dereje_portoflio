@@ -24,39 +24,53 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <Section id="top">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-medium text-muted">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60 motion-reduce:animate-none" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-          </span>
-          {hero.availability}
-        </span>
-        <div className="mt-8">
-          <Eyebrow>{hero.eyebrow}</Eyebrow>
-        </div>
-        <h1 className="mt-4 max-w-4xl text-balance text-4xl font-normal leading-[1.08] tracking-tight sm:text-5xl md:text-[4rem]">
-          {hero.heading}
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          {hero.subhead}
-        </p>
-        <div className="mt-10 flex flex-wrap gap-3">
-          <Button href="#work">View my work</Button>
-          <Button href="#contact" variant="secondary">
-            Get in touch
-          </Button>
-        </div>
-        <dl className="mt-16 grid gap-8 border-t border-border pt-10 sm:grid-cols-3">
-          {hero.stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col">
-              <dt className="mt-1 text-sm text-muted">{stat.label}</dt>
-              <dd className="order-first font-heading text-3xl font-normal tracking-tight">
-                {stat.value}
-              </dd>
+      <Section id="top" className="relative overflow-hidden">
+        <div aria-hidden="true" className="hero-pattern absolute inset-0" />
+        <div className="relative grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-center lg:gap-16 xl:gap-20">
+          {/* Photo first on mobile, right column on desktop */}
+          <div className="w-44 sm:w-52 lg:order-last lg:w-full lg:max-w-[460px] lg:justify-self-end">
+            <ProfilePhoto
+              variant="hero"
+              src={about.photo}
+              alt="Yakob Dereje"
+              initials={about.initials}
+            />
+          </div>
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-medium text-muted">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60 motion-reduce:animate-none" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              </span>
+              {hero.availability}
+            </span>
+            <div className="mt-8">
+              <Eyebrow>{hero.eyebrow}</Eyebrow>
             </div>
-          ))}
-        </dl>
+            <h1 className="mt-4 max-w-4xl text-balance text-4xl font-normal leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]">
+              {hero.heading}
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+              {hero.subhead}
+            </p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Button href="#work">View my work</Button>
+              <Button href="#contact" variant="secondary">
+                Get in touch
+              </Button>
+            </div>
+            <dl className="mt-16 grid gap-8 border-t border-border pt-10 sm:grid-cols-3">
+              {hero.stats.map((stat) => (
+                <div key={stat.label} className="flex flex-col">
+                  <dt className="mt-1 text-sm text-muted">{stat.label}</dt>
+                  <dd className="order-first font-heading text-3xl font-normal tracking-tight">
+                    {stat.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
       </Section>
 
       {/* About */}
