@@ -1,6 +1,7 @@
 import CaseStudyCard from "@/components/CaseStudyCard";
 import CertificateGallery from "@/components/CertificateGallery";
 import ContactForm from "@/components/ContactForm";
+import ProjectBanner from "@/components/ProjectBanner";
 import ProfilePhoto from "@/components/ProfilePhoto";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import SectionHeader, { Eyebrow } from "@/components/SectionHeader";
@@ -19,6 +20,7 @@ import {
 } from "@/lib/data/home";
 import { moreProjects } from "@/lib/data/more-projects";
 import { skillGroups } from "@/lib/data/skills";
+import { bannerFor } from "@/lib/banner";
 
 export default function HomePage() {
   return (
@@ -206,19 +208,27 @@ export default function HomePage() {
           />
         </Reveal>
         <RevealGroup className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {moreProjects.map((project) => (
+          {moreProjects.map((project, index) => (
             <RevealItem key={project.title}>
-              <Card className="flex h-full flex-col p-6">
-                <h3 className="text-lg font-medium tracking-tight">
-                  {project.title}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
-                  {project.summary}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.stack.map((tech) => (
-                    <Pill key={tech}>{tech}</Pill>
-                  ))}
+              <Card className="flex h-full flex-col overflow-hidden">
+                <ProjectBanner
+                  id={`more-${index}`}
+                  {...bannerFor(project.title, index)}
+                  className="h-[112px] shrink-0"
+                  initialsClassName="text-3xl"
+                />
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-lg font-medium tracking-tight">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
+                    {project.summary}
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <Pill key={tech}>{tech}</Pill>
+                    ))}
+                  </div>
                 </div>
               </Card>
             </RevealItem>

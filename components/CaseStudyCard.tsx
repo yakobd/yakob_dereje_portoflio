@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CaseStudy } from "@/lib/data/case-studies";
+import ProjectBanner from "./ProjectBanner";
 import Card from "./ui/Card";
 import Pill from "./ui/Pill";
 
@@ -34,11 +35,14 @@ export default function CaseStudyCard({
             className="object-cover object-top"
           />
         ) : (
-          <span
-            className={`font-heading text-4xl font-medium tracking-tight text-surface ${lead ? "md:text-7xl" : ""}`}
-          >
-            {study.initials}
-          </span>
+          <ProjectBanner
+            id={study.slug}
+            color={study.heroColor}
+            initials={study.initials}
+            pattern={study.pattern}
+            fill
+            initialsClassName={`text-4xl ${lead ? "md:text-7xl" : ""}`}
+          />
         )}
         <span className="absolute left-4 top-4 z-10 rounded-full bg-surface/90 px-3 py-1 text-xs font-medium text-foreground">
           {study.tag}

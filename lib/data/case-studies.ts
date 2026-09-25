@@ -1,3 +1,5 @@
+import type { BannerPattern } from "@/lib/banner";
+
 export type Challenge = {
   title: string;
   description: string;
@@ -8,6 +10,8 @@ export type CaseStudy = {
   initials: string;
   /** Home-page card cover and case study hero background, as a hex color. */
   heroColor: string;
+  /** Generated banner pattern used when there's no coverImageUrl. */
+  pattern: BannerPattern;
   /** Short category label on the home-page card. */
   tag: string;
   /**
@@ -39,6 +43,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "bete-dokimas-clients",
     initials: "BD",
+    pattern: "circles",
     heroColor: "#B5651D",
     tag: "Multi-tenant · Live",
     heroTag: "Multi-tenant platform · AI-directed build · Live production",
@@ -99,6 +104,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "hiruy-learn",
     initials: "HL",
+    pattern: "dots",
     heroColor: "#3B6E5E",
     tag: "Ed-tech · Live",
     heroTag: "Ed-tech platform · Solo build · Live production",
@@ -159,6 +165,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "hiruy-platform",
     initials: "HT",
+    pattern: "hex",
     heroColor: "#8A4B2E",
     tag: "Company platform · Live",
     heroTag: "Company platform · Solo build · Live production",
@@ -208,6 +215,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "doc-intelligence",
     initials: "DR",
+    pattern: "waves",
     heroColor: "#5B4A6F",
     tag: "AI · RAG",
     heroTag: "AI · RAG pipeline · 10 Academy project",
@@ -234,6 +242,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "automaton-auditor",
     initials: "AA",
+    pattern: "triangles",
     heroColor: "#3E5C76",
     tag: "Multi-agent system",
     heroTag: "Multi-agent system · LangGraph · 10 Academy project",
