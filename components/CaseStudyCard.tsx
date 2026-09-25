@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CaseStudy } from "@/lib/data/case-studies";
 import Card from "./ui/Card";
 import Pill from "./ui/Pill";
@@ -23,13 +24,24 @@ export default function CaseStudyCard({
         className={`relative flex h-[140px] items-center justify-center ${lead ? "md:h-auto md:min-h-[320px]" : ""}`}
         style={{ backgroundColor: study.heroColor }}
       >
-        <span className="absolute left-4 top-4 rounded-full bg-surface/90 px-3 py-1 text-xs font-medium text-foreground">
+        {study.coverImageUrl ? (
+          // Decorative: the card's title already names the project.
+          <Image
+            src={study.coverImageUrl}
+            alt=""
+            fill
+            sizes={lead ? "(min-width: 768px) 40vw, 100vw" : "(min-width: 768px) 50vw, 100vw"}
+            className="object-cover object-top"
+          />
+        ) : (
+          <span
+            className={`font-heading text-4xl font-medium tracking-tight text-surface ${lead ? "md:text-7xl" : ""}`}
+          >
+            {study.initials}
+          </span>
+        )}
+        <span className="absolute left-4 top-4 z-10 rounded-full bg-surface/90 px-3 py-1 text-xs font-medium text-foreground">
           {study.tag}
-        </span>
-        <span
-          className={`font-heading text-4xl font-medium tracking-tight text-surface ${lead ? "md:text-7xl" : ""}`}
-        >
-          {study.initials}
         </span>
       </div>
       <div

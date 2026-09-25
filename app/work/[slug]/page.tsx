@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
@@ -36,6 +37,7 @@ export function generateMetadata({ params }: CaseStudyPageProps): Metadata {
       title: study.title,
       description,
       url,
+      images: study.coverImageUrl ? [study.coverImageUrl] : undefined,
     },
     twitter: { card: "summary", title: study.title, description },
   };
@@ -123,6 +125,18 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
             <path d="M7 17L17 7M8 7h9v9" />
           </svg>
         </a>
+        {study.coverImageUrl && (
+          <div className="relative mt-12 aspect-[16/10] max-w-5xl overflow-hidden rounded-2xl border border-surface/20 bg-surface/10 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)]">
+            <Image
+              src={study.coverImageUrl}
+              alt={`Screenshot of ${study.title}`}
+              fill
+              priority
+              sizes="(min-width: 1280px) 1024px, 100vw"
+              className="object-cover object-top"
+            />
+          </div>
+        )}
       </header>
 
       {/* Body */}

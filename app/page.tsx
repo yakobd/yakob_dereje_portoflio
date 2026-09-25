@@ -1,4 +1,5 @@
 import CaseStudyCard from "@/components/CaseStudyCard";
+import ProfilePhoto from "@/components/ProfilePhoto";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import SectionHeader, { Eyebrow } from "@/components/SectionHeader";
 import Button from "@/components/ui/Button";
@@ -59,12 +60,11 @@ export default function HomePage() {
       {/* About */}
       <Section id="about" surface>
         <Reveal className="grid gap-10 md:grid-cols-[120px_1fr] md:gap-16">
-          <div
-            aria-hidden="true"
-            className="flex h-[120px] w-[120px] items-center justify-center rounded-full bg-accent font-heading text-4xl font-medium text-surface"
-          >
-            {about.initials}
-          </div>
+          <ProfilePhoto
+            src={about.photo}
+            alt="Portrait of Yakob Dereje"
+            initials={about.initials}
+          />
           <div className="max-w-3xl">
             <SectionHeader eyebrow="About" title={about.heading} />
             <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted">

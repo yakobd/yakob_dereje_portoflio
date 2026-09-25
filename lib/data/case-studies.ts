@@ -10,6 +10,11 @@ export type CaseStudy = {
   heroColor: string;
   /** Short category label on the home-page card. */
   tag: string;
+  /**
+   * Screenshot used on the home card and case study hero, e.g.
+   * "/projects/<slug>.png". Leave unset to use the color + initials cover.
+   */
+  coverImageUrl?: string;
   /** Longer category line in the case study hero. */
   heroTag: string;
   title: string;
