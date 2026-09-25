@@ -3,6 +3,10 @@ export type Credential = {
   issuer: string;
   /** Omitted when there is no date to show. */
   date?: string;
+  /** Certificate image, shown as a thumbnail that opens a lightbox. */
+  imageUrl?: string;
+  /** Optional second image for the same credential (e.g. program details). */
+  imageUrl2?: string;
 };
 
 export const credentials: Credential[] = [
@@ -12,6 +16,8 @@ export const credentials: Credential[] = [
     issuer:
       "10 Academy & Tenacious Intelligence Corp · 720 hrs · Top 3% of applicants",
     date: "May 2026",
+    imageUrl: "/certificates/10academy-certificate.png",
+    imageUrl2: "/certificates/10academy-program-details.png",
   },
   {
     title: "BSc, Software Engineering",
