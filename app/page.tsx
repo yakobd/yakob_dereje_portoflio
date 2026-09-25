@@ -228,7 +228,9 @@ export default function HomePage() {
                 </div>
               </div>
               {credential.date && (
-                <p className="shrink-0 text-sm text-subtle">
+                <p
+                  className={`shrink-0 text-sm text-subtle ${credential.imageUrl ? "pl-24 sm:pl-0" : ""}`}
+                >
                   {credential.date}
                 </p>
               )}

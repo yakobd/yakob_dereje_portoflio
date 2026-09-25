@@ -23,17 +23,21 @@ export const credentials: Credential[] = [
     title: "BSc, Software Engineering",
     issuer: "Jimma University",
     date: "June 2025",
+    imageUrl: "/certificates/degree.jpg",
   },
   {
     title: "Internship Certificate — Frontend Flutter Developer",
     issuer: "TechBridge",
+    imageUrl: "/certificates/Internship_Techbridge.jpg",
   },
   {
     title: "Nanodegree — Artificial Intelligence Fundamentals",
     issuer: "Udacity",
+    imageUrl: "/certificates/Udacity_AI.jpg",
   },
   {
     title: "Nanodegree — Programming Fundamentals",
     issuer: "Udacity",
+    imageUrl: "/certificates/Udacity_WEB.jpg",
   },
 ];
