@@ -1,5 +1,6 @@
 import CaseStudyCard from "@/components/CaseStudyCard";
 import CertificateGallery from "@/components/CertificateGallery";
+import ContactForm from "@/components/ContactForm";
 import ProfilePhoto from "@/components/ProfilePhoto";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import SectionHeader, { Eyebrow } from "@/components/SectionHeader";
@@ -250,10 +251,17 @@ export default function HomePage() {
           <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-muted">
             {contact.details}
           </p>
-          <div className="mt-10">
+          <div className="mx-auto mt-10 max-w-xl">
+            <ContactForm />
+            <p className="mt-4 text-sm text-muted">{contact.responseTime}</p>
+          </div>
+          <p className="mt-12 text-sm font-medium text-muted">
+            Prefer to reach me directly?
+          </p>
+          <div className="mt-4">
             <Button
               href={`mailto:${contact.email}`}
-              variant="accent"
+              variant="secondary"
               size="lg"
               className="max-w-full break-all"
             >
