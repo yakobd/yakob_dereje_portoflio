@@ -60,7 +60,7 @@ export default function ProjectDetail({ project, index }: ProjectDetailProps) {
           ) : (
             <ProjectBanner
               id={project.slug}
-              {...bannerFor(project.title, index)}
+              {...bannerFor(project, index)}
               fill
               initialsClassName="text-6xl md:text-7xl"
             />
@@ -142,7 +142,7 @@ export default function ProjectDetail({ project, index }: ProjectDetailProps) {
         </section>
 
         <div className="mt-16 border-t border-border pt-16 text-center">
-          <Button href="/#work" variant="secondary">
+          <Button href="/#more-work" variant="secondary">
             ← See more work
           </Button>
         </div>

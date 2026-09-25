@@ -161,46 +161,63 @@ export default function HomePage() {
         </RevealGroup>
       </Section>
 
-      {/* Testimonials */}
-      <Section surface>
-        <Reveal>
-          <SectionHeader eyebrow="What Clients Say" title="Testimonials." />
-        </Reveal>
-        <RevealGroup className="mt-12 grid gap-6 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <RevealItem
-              key={index}
-              // Lead testimonial: two columns wide, two rows tall on desktop.
-              className={index === 0 ? "lg:col-span-2 lg:row-span-2" : undefined}
-            >
-              <Card className="h-full p-6 md:p-8">
-                <figure className="flex h-full flex-col">
-                  <span
-                    aria-hidden="true"
-                    className="font-heading text-5xl leading-[0.6] text-accent"
-                  >
-                    “
-                  </span>
-                  <blockquote
-                    className={`mt-4 flex-1 leading-relaxed text-foreground ${
-                      index === 0 ? "text-base md:text-lg md:leading-[1.75] lg:text-xl lg:leading-[1.7]" : "text-base"
-                    }`}
-                  >
-                    <p>{testimonial.quote}</p>
-                  </blockquote>
-                  <figcaption className="mt-6 border-t border-border pt-4">
-                    <p className="font-medium">{testimonial.name}</p>
-                    <p className="text-sm text-subtle">{testimonial.role}</p>
-                  </figcaption>
-                </figure>
-              </Card>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-      </Section>
+      {/* Testimonials (placeholders are filtered out in lib/data/home.ts) */}
+      {testimonials.length > 0 && (
+        <Section surface>
+          <Reveal>
+            <SectionHeader eyebrow="What Clients Say" title="Testimonials." />
+          </Reveal>
+          <RevealGroup
+            className={`mt-12 grid gap-6 ${
+              testimonials.length === 2 ? "lg:grid-cols-5" : "lg:grid-cols-3"
+            }`}
+          >
+            {testimonials.map((testimonial, index) => (
+              <RevealItem
+                key={index}
+                className={
+                  testimonials.length === 2
+                    ? // Two side by side, the longer lead quote a bit wider.
+                      index === 0
+                      ? "lg:col-span-3"
+                      : "lg:col-span-2"
+                    : // Three or more: lead is two columns wide, two rows tall.
+                      index === 0 && testimonials.length > 1
+                      ? "lg:col-span-2 lg:row-span-2"
+                      : undefined
+                }
+              >
+                <Card className="h-full p-6 md:p-8">
+                  <figure className="flex h-full flex-col">
+                    <span
+                      aria-hidden="true"
+                      className="font-heading text-5xl leading-[0.6] text-accent"
+                    >
+                      “
+                    </span>
+                    <blockquote
+                      className={`mt-4 flex-1 leading-relaxed text-foreground ${
+                        index === 0 || testimonials.length === 2
+                          ? "text-base md:text-lg md:leading-[1.75] lg:text-xl lg:leading-[1.7]"
+                          : "text-base"
+                      }`}
+                    >
+                      <p>{testimonial.quote}</p>
+                    </blockquote>
+                    <figcaption className="mt-6 border-t border-border pt-4">
+                      <p className="font-medium">{testimonial.name}</p>
+                      <p className="text-sm text-subtle">{testimonial.role}</p>
+                    </figcaption>
+                  </figure>
+                </Card>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </Section>
+      )}
 
       {/* More projects */}
-      <Section>
+      <Section id="more-work">
         <Reveal>
           <SectionHeader
             eyebrow="More Projects"
@@ -216,7 +233,7 @@ export default function HomePage() {
               >
                 <ProjectBanner
                   id={`more-${index}`}
-                  {...bannerFor(project.title, index)}
+                  {...bannerFor(project, index)}
                   className="h-[112px] shrink-0"
                   initialsClassName="text-3xl"
                 />
@@ -274,9 +291,7 @@ export default function HomePage() {
                 )}
                 <div>
                   <p className="text-lg font-medium">{credential.title}</p>
-                  <p className="mt-1 text-sm text-muted">
-                    {credential.issuer}
-                  </p>
+                  <p className="mt-1 text-sm text-muted">{credential.issuer}</p>
                 </div>
               </div>
               {credential.date && (

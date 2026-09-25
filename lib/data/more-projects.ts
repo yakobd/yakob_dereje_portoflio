@@ -2,6 +2,8 @@ export type MoreProject = {
   /** URL segment for /work/<slug>. Must not clash with a case study slug. */
   slug: string;
   title: string;
+  /** Banner initials; derived from the title when unset. */
+  initials?: string;
   summary: string;
   stack: string[];
   /** Screenshot for the card and detail page; generated banner if unset. */
@@ -37,6 +39,7 @@ export const moreProjects: MoreProject[] = [
   {
     slug: "ai-interview-guide",
     title: "AI Interview Guide",
+    initials: "IG",
     summary: "AI-powered interview prep platform with real-time voice chat.",
     stack: ["Next.js", "Voice API"],
   },
@@ -50,6 +53,7 @@ export const moreProjects: MoreProject[] = [
   {
     slug: "ai-native-ide",
     title: "AI-Native IDE & Intent Traceability",
+    initials: "AN",
     summary:
       "Deterministic hook system tracing AI agent code edits back to business intent.",
     stack: ["TypeScript", "VS Code API"],
@@ -64,6 +68,7 @@ export const moreProjects: MoreProject[] = [
   {
     slug: "the-ledger",
     title: "The Ledger",
+    initials: "TL",
     summary:
       "Event-sourced financial orchestration engine for async multi-agent loan processing.",
     stack: ["Python", "PostgreSQL"],

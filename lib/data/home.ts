@@ -55,8 +55,11 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
+// Entries whose quote is still this text are hidden on the site.
+export const placeholderQuote = "[Client testimonial — add once available]";
+
 // The first testimonial is shown as the large lead card on desktop.
-export const testimonials: Testimonial[] = [
+const allTestimonials: Testimonial[] = [
   {
     quote:
       "Yakob did an excellent job delivering this project. He completed the AI-powered Telegram bot exactly as requested and within the agreed timeline. His communication was clear and professional, and he made sure to clarify all requirements before final submission. The code was well-structured, clean, and easy to understand, and the documentation he provided was very clear, making setup straightforward. The English and Amharic multilingual support was implemented perfectly, which was very important for our target users. Yakob showed strong Node.js and OpenAI API expertise, paid great attention to detail, and followed platform policies responsibly. He was responsive, proactive, and open to feedback. I would highly recommend Yakob to anyone looking for a reliable developer for Telegram bots, AI integrations, or Node.js projects, and I would be happy to work with him again.",
@@ -71,11 +74,15 @@ export const testimonials: Testimonial[] = [
   },
   // Placeholder until the next testimonial is available.
   {
-    quote: "[Client testimonial — add once available]",
+    quote: placeholderQuote,
     name: "[Client Name]",
     role: "[Role, Company]",
   },
 ];
+
+export const testimonials = allTestimonials.filter(
+  (testimonial) => testimonial.quote !== placeholderQuote,
+);
 
 export const contact = {
   heading: "Available for freelance and contract work.",

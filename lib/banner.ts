@@ -39,9 +39,12 @@ export function initialsFrom(title: string) {
  * Banner look for the Nth item of a grid. Colors and patterns cycle every 6,
  * so neighbors in a 2- or 3-column grid never share a color or pattern.
  */
-export function bannerFor(title: string, index: number) {
+export function bannerFor(
+  project: { title: string; initials?: string },
+  index: number,
+) {
   return {
-    initials: initialsFrom(title),
+    initials: project.initials ?? initialsFrom(project.title),
     color: bannerColors[index % bannerColors.length],
     pattern: bannerPatterns[index % bannerPatterns.length],
   };
