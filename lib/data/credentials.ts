@@ -28,16 +28,19 @@ export const credentials: Credential[] = [
   {
     title: "Internship Certificate — Frontend Flutter Developer",
     issuer: "TechBridge",
+    date: "November 2024",
     imageUrl: "/certificates/Internship_Techbridge.jpg",
   },
   {
     title: "Nanodegree — Artificial Intelligence Fundamentals",
     issuer: "Udacity",
+    date: "December 2025",
     imageUrl: "/certificates/Udacity_AI.jpg",
   },
   {
     title: "Nanodegree — Programming Fundamentals",
     issuer: "Udacity",
+    date: "December 2025",
     imageUrl: "/certificates/Udacity_WEB.jpg",
   },
 ];
