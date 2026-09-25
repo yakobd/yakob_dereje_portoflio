@@ -55,12 +55,27 @@ export const processSteps: ProcessStep[] = [
   },
 ];
 
-// Placeholders until real testimonials are available.
-export const testimonials: Testimonial[] = Array.from({ length: 3 }, () => ({
-  quote: "[Client testimonial — add once available]",
-  name: "[Client Name]",
-  role: "[Role, Company]",
-}));
+// The first testimonial is shown as the large lead card on desktop.
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Yakob did an excellent job delivering this project. He completed the AI-powered Telegram bot exactly as requested and within the agreed timeline. His communication was clear and professional, and he made sure to clarify all requirements before final submission. The code was well-structured, clean, and easy to understand, and the documentation he provided was very clear, making setup straightforward. The English and Amharic multilingual support was implemented perfectly, which was very important for our target users. Yakob showed strong Node.js and OpenAI API expertise, paid great attention to detail, and followed platform policies responsibly. He was responsive, proactive, and open to feedback. I would highly recommend Yakob to anyone looking for a reliable developer for Telegram bots, AI integrations, or Node.js projects, and I would be happy to work with him again.",
+    name: "Verified Upwork Client",
+    role: "AI Telegram Bot Project",
+  },
+  {
+    quote:
+      "Yakob did an excellent job delivering a fast and well-structured application. He was very professional, communicated clearly, and delivered everything on time. The code quality was clean, and he even suggested improvements that enhanced performance and usability. I really enjoyed working with him and would definitely hire him again for future projects. Highly recommended.",
+    name: "Verified Upwork Client",
+    role: "Upwork Project",
+  },
+  // Placeholder until the next testimonial is available.
+  {
+    quote: "[Client testimonial — add once available]",
+    name: "[Client Name]",
+    role: "[Role, Company]",
+  },
+];
 
 export const contact = {
   heading: "Available for freelance and contract work.",

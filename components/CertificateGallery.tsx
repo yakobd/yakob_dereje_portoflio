@@ -21,11 +21,19 @@ export default function CertificateGallery({
   const [broken, setBroken] = useState(false);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+  const [zoomed, setZoomed] = useState(false);
+  // Zoom focus point, as percentages of the image area.
+  const [origin, setOrigin] = useState({ x: 50, y: 50 });
 
   const altFor = (i: number) =>
     images.length > 1
       ? `${title} — image ${i + 1} of ${images.length}`
       : `${title} — certificate`;
+
+  // Always start unzoomed when opening or switching images.
+  useEffect(() => {
+    setZoomed(false);
+  }, [open, index]);
 
   useEffect(() => {
     if (!open) return;
@@ -51,19 +59,33 @@ export default function CertificateGallery({
       setIndex((i) => (i - 1 + images.length) % images.length);
   }
 
+  function pointFrom(event: React.MouseEvent<HTMLElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    return {
+      x: ((event.clientX - rect.left) / rect.width) * 100,
+      y: ((event.clientY - rect.top) / rect.height) * 100,
+    };
+  }
+
+  function toggleZoom(event: React.MouseEvent<HTMLButtonElement>) {
+    // Keyboard activation reports clientX/Y of 0: zoom toward the center.
+    setOrigin(event.detail === 0 ? { x: 50, y: 50 } : pointFrom(event));
+    setZoomed((value) => !value);
+  }
+
   return (
     <>
       <button
         type="button"
         onClick={() => show(0)}
         aria-label={`View certificate: ${title}`}
-        className="relative h-[60px] w-[80px] shrink-0 overflow-hidden rounded-lg border border-border bg-chip transition hover:border-border-strong hover:shadow-sm"
+        className="relative h-[100px] w-[140px] shrink-0 overflow-hidden rounded-lg border border-border bg-chip transition hover:border-border-strong hover:shadow-sm"
       >
         <Image
           src={images[0]}
           alt=""
           fill
-          sizes="80px"
+          sizes="140px"
           onError={() => setBroken(true)}
           className="object-cover object-top"
         />
@@ -105,18 +127,35 @@ export default function CertificateGallery({
             </button>
           </div>
 
-          <div className="relative mt-4 h-[65vh] w-full">
+          <button
+            type="button"
+            onClick={toggleZoom}
+            onMouseMove={(event) => zoomed && setOrigin(pointFrom(event))}
+            aria-label={zoomed ? "Zoom out" : "Zoom in"}
+            aria-pressed={zoomed}
+            className={`relative mt-4 block h-[65vh] w-full overflow-hidden rounded-lg focus-visible:outline-offset-0 ${
+              zoomed ? "cursor-zoom-out" : "cursor-zoom-in"
+            }`}
+          >
             {open && (
               <Image
                 key={images[index]}
                 src={images[index]}
                 alt={altFor(index)}
                 fill
-                sizes="(min-width: 1200px) 1100px, 92vw"
-                className="object-contain"
+                // Roughly 2x the display width so the 1.8x zoom stays sharp.
+                sizes="(min-width: 1200px) 2000px, 184vw"
+                style={{
+                  transform: zoomed ? "scale(1.8)" : "scale(1)",
+                  transformOrigin: `${origin.x}% ${origin.y}%`,
+                }}
+                className="object-contain transition-transform duration-300 ease-out motion-reduce:transition-none"
               />
             )}
-          </div>
+          </button>
+          <p className="mt-2 text-center text-xs text-muted">
+            {zoomed ? "Click to zoom out" : "Click the image to zoom in"}
+          </p>
 
           {images.length > 1 && (
             <div className="mt-4 flex justify-center gap-3">

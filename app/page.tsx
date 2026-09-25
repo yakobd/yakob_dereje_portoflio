@@ -166,15 +166,31 @@ export default function HomePage() {
         </Reveal>
         <RevealGroup className="mt-12 grid gap-6 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <RevealItem key={index}>
-              <Card className="flex h-full flex-col p-6">
-                <blockquote className="flex-1 font-heading text-lg italic leading-relaxed text-foreground">
-                  “{testimonial.quote}”
-                </blockquote>
-                <div className="mt-6">
-                  <p className="font-medium">{testimonial.name}</p>
-                  <p className="text-sm text-subtle">{testimonial.role}</p>
-                </div>
+            <RevealItem
+              key={index}
+              // Lead testimonial: two columns wide, two rows tall on desktop.
+              className={index === 0 ? "lg:col-span-2 lg:row-span-2" : undefined}
+            >
+              <Card className="h-full p-6 md:p-8">
+                <figure className="flex h-full flex-col">
+                  <span
+                    aria-hidden="true"
+                    className="font-heading text-5xl leading-[0.6] text-accent"
+                  >
+                    “
+                  </span>
+                  <blockquote
+                    className={`mt-4 flex-1 leading-relaxed text-foreground ${
+                      index === 0 ? "text-base md:text-lg md:leading-[1.75] lg:text-xl lg:leading-[1.7]" : "text-base"
+                    }`}
+                  >
+                    <p>{testimonial.quote}</p>
+                  </blockquote>
+                  <figcaption className="mt-6 border-t border-border pt-4">
+                    <p className="font-medium">{testimonial.name}</p>
+                    <p className="text-sm text-subtle">{testimonial.role}</p>
+                  </figcaption>
+                </figure>
               </Card>
             </RevealItem>
           ))}
@@ -225,7 +241,7 @@ export default function HomePage() {
               key={credential.title}
               className="flex flex-col gap-2 border-b border-border px-2 py-6 transition-colors hover:bg-background sm:flex-row sm:items-start sm:justify-between sm:gap-8 md:px-4"
             >
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
                 {credential.imageUrl && (
                   <CertificateGallery
                     title={credential.title}
@@ -242,9 +258,7 @@ export default function HomePage() {
                 </div>
               </div>
               {credential.date && (
-                <p
-                  className={`shrink-0 text-sm text-subtle ${credential.imageUrl ? "pl-24 sm:pl-0" : ""}`}
-                >
+                <p className="shrink-0 text-sm text-subtle">
                   {credential.date}
                 </p>
               )}
