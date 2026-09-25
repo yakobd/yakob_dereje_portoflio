@@ -46,9 +46,9 @@ export default function HomePage() {
         </div>
         <dl className="mt-16 grid gap-8 border-t border-border pt-10 sm:grid-cols-3">
           {hero.stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col-reverse">
+            <div key={stat.label} className="flex flex-col">
               <dt className="mt-1 text-sm text-muted">{stat.label}</dt>
-              <dd className="font-heading text-3xl font-normal tracking-tight">
+              <dd className="order-first font-heading text-3xl font-normal tracking-tight">
                 {stat.value}
               </dd>
             </div>
@@ -148,7 +148,7 @@ export default function HomePage() {
         <Reveal>
           <SectionHeader eyebrow="What Clients Say" title="Testimonials." />
         </Reveal>
-        <RevealGroup className="mt-12 grid gap-6 md:grid-cols-3">
+        <RevealGroup className="mt-12 grid gap-6 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <RevealItem key={index}>
               <Card className="flex h-full flex-col p-6">
