@@ -3,6 +3,7 @@ import { Fraunces, IBM_Plex_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import { MotionProvider } from "@/components/Reveal";
+import { themeInitScript } from "@/lib/theme";
 import { siteDescription, siteName, siteTitle, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -53,8 +54,13 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${fraunces.variable} ${plexSans.variable} scroll-pt-16 scroll-smooth`}
+      // The theme script adds .dark before hydration.
+      suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
+        {/* First in <body>, so it runs before anything paints (no theme flash).
+            Not in <head>: Next 14 drops a layout <head> on notFound() renders. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <a
           href="#main-content"
           className="sr-only z-[60] rounded-full bg-foreground text-sm font-medium text-background focus:not-sr-only focus:fixed focus:px-5 focus:py-3 focus:left-4 focus:top-3 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-accent"

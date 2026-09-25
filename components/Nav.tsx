@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
+import ThemeToggle from "./ThemeToggle";
 
 // Prefixed with "/" so the anchors also work from case study pages.
 const links = [
@@ -33,6 +34,7 @@ export default function Nav() {
               </li>
             ))}
           </ul>
+          <ThemeToggle className="-mx-2 hidden md:flex" />
           <Link
             href="/#contact"
             className="rounded-full bg-accent-strong px-5 py-2 text-sm font-medium text-background transition hover:brightness-95"

@@ -14,6 +14,10 @@ type CaseStudyPageProps = {
   params: { slug: string };
 };
 
+// Only the slugs below exist; anything else gets the server-rendered 404
+// (with dynamic params, Next 14 sent a client-rendered shell for notFound()).
+export const dynamicParams = false;
+
 // Full case studies and the lighter "More Projects" pages share /work/<slug>.
 export function generateStaticParams() {
   const slugs = [
@@ -123,7 +127,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
 
       {/* Hero */}
       <header
-        className="px-6 py-16 text-surface md:px-16 md:py-24"
+        className="px-6 py-16 text-white md:px-16 md:py-24"
         style={{
           backgroundColor: study.heroColor,
           // 15% foreground tint keeps white body text at AA on every hero color.
@@ -131,20 +135,20 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
             "linear-gradient(rgba(34, 31, 28, 0.15), rgba(34, 31, 28, 0.15))",
         }}
       >
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-surface/90">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/90">
           {study.heroTag}
         </p>
         <h1 className="mt-4 max-w-4xl text-balance text-4xl font-normal leading-[1.08] tracking-tight md:text-6xl">
           {study.title}
         </h1>
-        <p className="mt-8 max-w-3xl text-lg leading-relaxed text-surface/90">
+        <p className="mt-8 max-w-3xl text-lg leading-relaxed text-white/90">
           {study.problem}
         </p>
         <a
           href={study.linkUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-10 inline-flex items-center gap-2 rounded-full bg-surface px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-background focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface"
+          className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           {study.linkLabel}
           <svg
@@ -162,7 +166,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           </svg>
         </a>
         {study.coverImageUrl && (
-          <div className="relative mt-12 aspect-[16/10] max-w-5xl overflow-hidden rounded-2xl border border-surface/20 bg-surface/10 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)]">
+          <div className="relative mt-12 aspect-[16/10] max-w-5xl overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)]">
             <Image
               src={study.coverImageUrl}
               alt={`Screenshot of ${study.title}`}

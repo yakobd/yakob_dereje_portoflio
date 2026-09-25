@@ -33,7 +33,7 @@ export default function ProfilePhoto({
         {failed ? (
           <div
             aria-hidden="true"
-            className="flex h-full w-full items-center justify-center font-heading text-7xl font-medium tracking-tight text-surface lg:text-8xl"
+            className="flex h-full w-full items-center justify-center font-heading text-7xl font-medium tracking-tight text-white lg:text-8xl"
           >
             {initials}
           </div>
@@ -57,7 +57,7 @@ export default function ProfilePhoto({
     return (
       <div
         aria-hidden="true"
-        className={`flex h-[120px] w-[120px] items-center justify-center rounded-full bg-accent font-heading text-4xl font-medium text-surface ${className}`.trim()}
+        className={`flex h-[120px] w-[120px] items-center justify-center rounded-full bg-accent font-heading text-4xl font-medium text-white ${className}`.trim()}
       >
         {initials}
       </div>

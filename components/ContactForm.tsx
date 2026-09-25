@@ -136,7 +136,7 @@ export default function ContactForm() {
                   [field.name]: undefined,
                 }));
             },
-            className: `${inputClasses} ${error ? "border-red-700" : "border-subtle"}`,
+            className: `${inputClasses} ${error ? "border-red-700 dark:border-red-400" : "border-subtle"}`,
           };
 
           return (
@@ -162,7 +162,7 @@ export default function ContactForm() {
                 />
               )}
               {error && (
-                <p id={`${id}-error`} className="mt-2 text-sm text-red-700">
+                <p id={`${id}-error`} className="mt-2 text-sm text-red-700 dark:text-red-400">
                   {error}
                 </p>
               )}
@@ -186,7 +186,7 @@ export default function ContactForm() {
       {status === "error" && formError && (
         <p
           role="alert"
-          className="mt-5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800"
+          className="mt-5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800 dark:bg-red-950/40 dark:text-red-300"
         >
           {formError} Your message is still here — try again, or email me
           directly below.

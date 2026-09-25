@@ -101,7 +101,7 @@ export default function CertificateGallery({
           // Clicks on the backdrop land on the dialog element itself.
           if (event.target === event.currentTarget) dialogRef.current?.close();
         }}
-        className="w-[min(92vw,1100px)] max-w-none rounded-2xl bg-transparent p-0 backdrop:bg-foreground/75 backdrop:backdrop-blur-sm"
+        className="w-[min(92vw,1100px)] max-w-none rounded-2xl bg-transparent p-0 backdrop:bg-black/75 backdrop:backdrop-blur-sm"
       >
         <div className="relative rounded-2xl bg-surface p-4 md:p-6">
           <div className="flex items-start justify-between gap-4">

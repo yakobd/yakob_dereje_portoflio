@@ -174,7 +174,7 @@ export default function ProjectBanner({
         <ellipse cx="50%" cy="50%" rx="30%" ry="48%" fill={`url(#${glowId})`} />
       </svg>
       <span
-        className={`relative font-heading font-medium tracking-tight text-surface [text-shadow:0_1px_12px_rgb(0_0_0/0.15)] ${initialsClassName}`.trim()}
+        className={`relative font-heading font-medium tracking-tight text-white [text-shadow:0_1px_12px_rgb(0_0_0/0.15)] ${initialsClassName}`.trim()}
       >
         {initials}
       </span>

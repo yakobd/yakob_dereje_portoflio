@@ -3,6 +3,36 @@
 @tailwind utilities;
 
 @layer base {
+  /* Theme tokens as RGB triplets; tailwind.config.ts wraps them in rgb(). */
+  :root {
+    --color-background: 250 247 242; /* #FAF7F2 ivory */
+    --color-foreground: 34 31 28; /* #221F1C near-black */
+    --color-surface: 255 255 255; /* #FFFFFF alternating sections */
+    --color-border: 231 224 214; /* #E7E0D6 */
+    --color-border-strong: 201 191 176; /* #C9BFB0 button outlines */
+    --color-muted: 107 101 93; /* #6B655D secondary text */
+    --color-subtle: 117 111 101; /* #756F65 tertiary text */
+    --color-chip: 240 235 226; /* #F0EBE2 tag / pill background */
+    --color-accent: 181 101 29; /* #B5651D terracotta: large text, fills, borders */
+    --color-accent-strong: 166 94 29; /* #A65E1D small accent text, filled buttons */
+    color-scheme: light;
+  }
+
+  /* Same relationships on a warm near-black; all text pairs pass WCAG AA. */
+  .dark {
+    --color-background: 26 24 21; /* #1A1815 */
+    --color-foreground: 242 237 230; /* #F2EDE6 */
+    --color-surface: 36 33 29; /* #24211D */
+    --color-border: 56 51 45; /* #38332D */
+    --color-border-strong: 90 83 74; /* #5A534A */
+    --color-muted: 181 172 159; /* #B5AC9F */
+    --color-subtle: 160 151 138; /* #A0978A */
+    --color-chip: 50 45 39; /* #322D27 */
+    --color-accent: 208 122 60; /* #D07A3C */
+    --color-accent-strong: 227 154 99; /* #E39A63: light text on dark, dark text on it */
+    color-scheme: dark;
+  }
+
   h1,
   h2,
   h3,
@@ -23,7 +53,7 @@
   /* Faint dot grid behind the hero, fading out toward the edges. */
   .hero-pattern {
     background-image: radial-gradient(
-      rgb(34 31 28 / 0.12) 1px,
+      rgb(var(--color-foreground) / 0.12) 1px,
       transparent 1.5px
     );
     background-size: 22px 22px;

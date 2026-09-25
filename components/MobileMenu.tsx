@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 type NavLink = { label: string; href: string };
 
@@ -34,7 +35,7 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
       if (event.key !== "Tab") return;
 
       const links = Array.from(
-        panelRef.current?.querySelectorAll<HTMLElement>("a") ?? [],
+        panelRef.current?.querySelectorAll<HTMLElement>("a, button") ?? [],
       );
       const focusables = toggleRef.current
         ? [toggleRef.current, ...links]
@@ -46,7 +47,10 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
       if (event.shiftKey && (index === 0 || index === -1)) {
         event.preventDefault();
         last.focus();
-      } else if (!event.shiftKey && (index === focusables.length - 1 || index === -1)) {
+      } else if (
+        !event.shiftKey &&
+        (index === focusables.length - 1 || index === -1)
+      ) {
         event.preventDefault();
         first.focus();
       }
@@ -103,7 +107,7 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
           <div
             aria-hidden="true"
             onClick={() => close()}
-            className="absolute inset-x-0 top-full h-[calc(100dvh-4rem)] bg-foreground/20"
+            className="absolute inset-x-0 top-full h-[calc(100dvh-4rem)] bg-black/20"
           />
           <div
             id="mobile-menu"
@@ -122,6 +126,9 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
                   </Link>
                 </li>
               ))}
+              <li>
+                <ThemeToggle variant="row" />
+              </li>
             </ul>
           </div>
         </>

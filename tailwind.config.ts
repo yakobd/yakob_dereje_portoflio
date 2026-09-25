@@ -1,7 +1,12 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
+// Colors are RGB triplets in CSS variables (app/globals.css) so the same
+// utilities (bg-background, text-muted, …) switch with the .dark class.
+const token = (name: string) => `rgb(var(--color-${name}) / <alpha-value>)`;
+
 const config: Config = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,16 +14,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#FAF7F2", // ivory
-        foreground: "#221F1C", // near-black
-        surface: "#FFFFFF", // alternating sections
-        border: "#E7E0D6",
-        "border-strong": "#C9BFB0", // button outlines
-        muted: "#6B655D", // secondary text
-        subtle: "#756F65", // tertiary text (darkened from #8A8377 for AA contrast)
-        chip: "#F0EBE2", // tag / pill background
-        accent: "#B5651D", // terracotta, primary brand accent (large text, fills, borders)
-        "accent-strong": "#A65E1D", // accent for small text and filled buttons (AA)
+        background: token("background"),
+        foreground: token("foreground"),
+        surface: token("surface"),
+        border: token("border"),
+        "border-strong": token("border-strong"),
+        muted: token("muted"),
+        subtle: token("subtle"),
+        chip: token("chip"),
+        accent: token("accent"),
+        "accent-strong": token("accent-strong"),
+        // Fixed near-black for text on always-light surfaces (e.g. white pills on color).
+        ink: "#221F1C",
       },
       fontFamily: {
         heading: ["var(--font-fraunces)", ...defaultTheme.fontFamily.serif],
