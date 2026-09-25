@@ -37,6 +37,8 @@ export type CaseStudy = {
   approach?: string;
   linkUrl: string;
   linkLabel: "View live" | "View repo";
+  /** Image paths for a future gallery, e.g. "/projects/<slug>-1.png". */
+  screenshots?: string[];
 };
 
 export const caseStudies: CaseStudy[] = [

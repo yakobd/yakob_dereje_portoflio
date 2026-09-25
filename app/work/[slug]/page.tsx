@@ -3,17 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import ProjectDetail from "@/components/ProjectDetail";
 import Button from "@/components/ui/Button";
 import Pill from "@/components/ui/Pill";
 import { caseStudies, getCaseStudy } from "@/lib/data/case-studies";
+import { getMoreProject, moreProjects } from "@/lib/data/more-projects";
 import { siteName } from "@/lib/site";
 
 type CaseStudyPageProps = {
   params: { slug: string };
 };
 
+// Full case studies and the lighter "More Projects" pages share /work/<slug>.
 export function generateStaticParams() {
-  return caseStudies.map((study) => ({ slug: study.slug }));
+  const slugs = [
+    ...caseStudies.map((study) => study.slug),
+    ...moreProjects.map((project) => project.slug),
+  ];
+  const duplicate = slugs.find((slug, i) => slugs.indexOf(slug) !== i);
+  if (duplicate) throw new Error(`Duplicate /work slug: "${duplicate}"`);
+  return slugs.map((slug) => ({ slug }));
 }
 
 function truncate(text: string, maxLength = 155) {
@@ -24,7 +33,30 @@ function truncate(text: string, maxLength = 155) {
 
 export function generateMetadata({ params }: CaseStudyPageProps): Metadata {
   const study = getCaseStudy(params.slug);
-  if (!study) return { title: "Page not found" };
+  if (!study) {
+    const match = getMoreProject(params.slug);
+    if (!match) return { title: "Page not found" };
+    const { project } = match;
+    const url = `/work/${project.slug}`;
+    return {
+      title: project.title,
+      description: project.summary,
+      alternates: { canonical: url },
+      openGraph: {
+        type: "article",
+        siteName,
+        title: project.title,
+        description: project.summary,
+        url,
+        images: project.coverImageUrl ? [project.coverImageUrl] : undefined,
+      },
+      twitter: {
+        card: "summary",
+        title: project.title,
+        description: project.summary,
+      },
+    };
+  }
   const description = truncate(study.problem);
   const url = `/work/${study.slug}`;
   return {
@@ -72,7 +104,11 @@ function BulletList({ items }: { items: string[] }) {
 
 export default function CaseStudyPage({ params }: CaseStudyPageProps) {
   const study = getCaseStudy(params.slug);
-  if (!study) notFound();
+  if (!study) {
+    const match = getMoreProject(params.slug);
+    if (!match) notFound();
+    return <ProjectDetail project={match.project} index={match.index} />;
+  }
 
   return (
     <>

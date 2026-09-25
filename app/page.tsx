@@ -210,7 +210,10 @@ export default function HomePage() {
         <RevealGroup className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {moreProjects.map((project, index) => (
             <RevealItem key={project.title}>
-              <Card className="flex h-full flex-col overflow-hidden">
+              <Card
+                href={`/work/${project.slug}`}
+                className="group flex h-full flex-col overflow-hidden"
+              >
                 <ProjectBanner
                   id={`more-${index}`}
                   {...bannerFor(project.title, index)}
@@ -229,6 +232,15 @@ export default function HomePage() {
                       <Pill key={tech}>{tech}</Pill>
                     ))}
                   </div>
+                  <span className="mt-5 text-sm font-medium text-accent-strong">
+                    View project{" "}
+                    <span
+                      aria-hidden="true"
+                      className="inline-block transition-transform group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </span>
                 </div>
               </Card>
             </RevealItem>
