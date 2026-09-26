@@ -1,5 +1,5 @@
 // TODO: replace with the real domain once it's chosen.
-export const siteUrl = "https://example.com";
+export const siteUrl = "https://yakobdereje.hiruytech.com";
 
 export const siteName = "Yakob Dereje";
 export const siteTitle =
