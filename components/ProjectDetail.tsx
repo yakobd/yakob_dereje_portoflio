@@ -110,20 +110,17 @@ export default function ProjectDetail({ project, index }: ProjectDetailProps) {
           )}
         </div>
 
-        <section className="mt-16 max-w-5xl">
-          <h2 className="text-2xl font-normal tracking-tight md:text-3xl">
-            Screenshots
-          </h2>
-          {screenshots.length > 0 ? (
+        {/* Only when there are screenshots: no heading or placeholder otherwise. */}
+        {screenshots.length > 0 && (
+          <section className="mt-16 max-w-5xl">
+            <h2 className="text-2xl font-normal tracking-tight md:text-3xl">
+              Screenshots
+            </h2>
             <div className="mt-6">
               <ScreenshotGallery title={project.title} images={screenshots} />
             </div>
-          ) : (
-            <div className="mt-6 rounded-2xl border border-dashed border-border-strong px-6 py-12 text-center">
-              <p className="text-muted">Screenshots coming soon.</p>
-            </div>
-          )}
-        </section>
+          </section>
+        )}
 
         <div className="mt-16 border-t border-border pt-16 text-center">
           <Button href="/#more-work" variant="secondary">
