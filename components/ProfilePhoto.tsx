@@ -5,6 +5,8 @@ import { useState } from "react";
 
 type ProfilePhotoProps = {
   src: string;
+  /** Tried if `src` fails to load, before falling back to the initials. */
+  fallbackSrc?: string;
   alt: string;
   initials: string;
   /**
@@ -15,15 +17,22 @@ type ProfilePhotoProps = {
   className?: string;
 };
 
-/** Profile photo; falls back to an accent block with initials if the image fails to load. */
+/** Profile photo; tries `src`, then `fallbackSrc`, then an accent block with initials. */
 export default function ProfilePhoto({
-  src,
+  src: primarySrc,
+  fallbackSrc,
   alt,
   initials,
   variant = "avatar",
   className = "",
 }: ProfilePhotoProps) {
+  const [src, setSrc] = useState(primarySrc);
   const [failed, setFailed] = useState(false);
+
+  function onError() {
+    if (fallbackSrc && src !== fallbackSrc) setSrc(fallbackSrc);
+    else setFailed(true);
+  }
 
   if (variant === "hero") {
     return (
@@ -44,7 +53,7 @@ export default function ProfilePhoto({
             fill
             priority
             sizes="(min-width: 1024px) 40vw, 240px"
-            onError={() => setFailed(true)}
+            onError={onError}
             // Keep the face (upper third of the portrait) in frame.
             className="object-cover object-[50%_30%]"
           />
@@ -70,7 +79,7 @@ export default function ProfilePhoto({
       alt={alt}
       width={120}
       height={120}
-      onError={() => setFailed(true)}
+      onError={onError}
       className={`h-[120px] w-[120px] rounded-full bg-chip object-cover object-[50%_20%] ${className}`.trim()}
     />
   );

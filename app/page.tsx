@@ -81,7 +81,8 @@ export default function HomePage() {
       <Section id="about" surface>
         <Reveal className="grid gap-10 md:grid-cols-[120px_1fr] md:gap-16">
           <ProfilePhoto
-            src={about.photo}
+            src={about.avatar}
+            fallbackSrc={about.photo}
             alt="Portrait of Yakob Dereje"
             initials={about.initials}
           />

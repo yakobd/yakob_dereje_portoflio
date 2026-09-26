@@ -18,8 +18,10 @@ export const hero = {
 
 export const about = {
   initials: "YD",
-  /** Shown in place of the initials once the file exists. */
+  /** Large hero photo. */
   photo: "/images/profile.png",
+  /** Small circular About avatar; falls back to `photo` if this file is missing. */
+  avatar: "/images/profile2.jpg",
   heading: "Technical founder, still writing the code.",
   paragraphs: [
     "I'm a software engineer based in Addis Ababa, Ethiopia, and the Co-Founder & CEO of Hiruy Technologies, an AI-powered software development and tech education company. I hold a BSc in Software Engineering from Jimma University and completed 10 Academy's intensive AI Agent Engineering, Evaluation, and Forward Deployed Engineering program with Distinction — top 3% of applicants.",
