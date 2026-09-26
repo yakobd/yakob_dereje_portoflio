@@ -71,7 +71,7 @@ export default function ProfilePhoto({
       width={120}
       height={120}
       onError={() => setFailed(true)}
-      className={`h-[120px] w-[120px] rounded-full bg-chip object-cover ${className}`.trim()}
+      className={`h-[120px] w-[120px] rounded-full bg-chip object-cover object-[50%_20%] ${className}`.trim()}
     />
   );
 }

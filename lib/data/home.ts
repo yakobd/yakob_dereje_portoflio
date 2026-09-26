@@ -19,7 +19,7 @@ export const hero = {
 export const about = {
   initials: "YD",
   /** Shown in place of the initials once the file exists. */
-  photo: "/images/profile.jpg",
+  photo: "/images/profile.png",
   heading: "Technical founder, still writing the code.",
   paragraphs: [
     "I'm a software engineer based in Addis Ababa, Ethiopia, and the Co-Founder & CEO of Hiruy Technologies, an AI-powered software development and tech education company. I hold a BSc in Software Engineering from Jimma University and completed 10 Academy's intensive AI Agent Engineering, Evaluation, and Forward Deployed Engineering program with Distinction — top 3% of applicants.",
