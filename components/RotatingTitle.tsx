@@ -9,10 +9,10 @@ type RotatingTitleProps = {
   interval?: number;
 };
 
-// One step larger than the section eyebrows (text-xs) for more presence in
-// the hero, still well below the H1.
+// Larger than the section eyebrows (text-xs) for more presence in the hero,
+// still well below the H1.
 const eyebrow =
-  "text-sm font-semibold uppercase tracking-[0.18em] text-accent-strong sm:text-base";
+  "text-base font-semibold uppercase tracking-[0.18em] text-accent-strong sm:text-lg";
 
 /**
  * Hero eyebrow that crossfades through the titles. Reduced-motion users see
@@ -45,7 +45,9 @@ export default function RotatingTitle({
   }
 
   return (
-    <p className={eyebrow}>
+    // Below 375px "Forward Deployed Engineer" wraps to two lines; reserve that
+    // height so the H1 doesn't jump each time it rotates in and out.
+    <p className={`${eyebrow} max-[374px]:min-h-[3rem]`}>
       {/* Read once in full; the visual rotation isn't announced. */}
       <span className="sr-only">{titles.join(", ")}</span>
       <AnimatePresence mode="wait" initial={false}>
