@@ -17,6 +17,7 @@ export type MoreProject = {
 export const moreProjects: MoreProject[] = [
   {
     slug: "bete-dokimas-website",
+    liveUrl: "https://betedokimas.com",
     coverImageUrl: "/projects/bete-dokimas-website-1.jpg",
     screenshots: [
       "/projects/bete-dokimas-website-1.jpg",
