@@ -22,7 +22,13 @@ export default function CaseStudyCard({
       className={`group h-full overflow-hidden ${lead ? "md:grid md:grid-cols-[2fr_3fr]" : ""} ${className}`.trim()}
     >
       <div
-        className={`relative flex h-[140px] items-center justify-center ${lead ? "md:h-auto md:min-h-[320px]" : ""}`}
+        className={`relative flex items-center justify-center ${
+          lead
+            ? `${study.coverImageUrl ? "h-[160px]" : "h-[140px]"} md:h-auto md:min-h-[320px]`
+            : study.coverImageUrl
+              ? "h-[160px] md:h-[210px]" // room for a real screenshot
+              : "h-[140px]"
+        }`}
         style={{ backgroundColor: study.heroColor }}
       >
         {study.coverImageUrl ? (
@@ -31,7 +37,11 @@ export default function CaseStudyCard({
             src={study.coverImageUrl}
             alt=""
             fill
-            sizes={lead ? "(min-width: 768px) 40vw, 100vw" : "(min-width: 768px) 50vw, 100vw"}
+            sizes={
+              lead
+                ? "(min-width: 768px) 40vw, 100vw"
+                : "(min-width: 768px) 50vw, 100vw"
+            }
             className="object-cover object-top"
           />
         ) : (
@@ -56,7 +66,9 @@ export default function CaseStudyCard({
         >
           {study.title}
         </h3>
-        <p className={`text-muted ${lead ? "md:text-lg md:leading-relaxed" : ""}`}>
+        <p
+          className={`text-muted ${lead ? "md:text-lg md:leading-relaxed" : ""}`}
+        >
           {study.summary}
         </p>
         <div className="flex flex-wrap gap-2">

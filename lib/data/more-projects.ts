@@ -17,6 +17,11 @@ export type MoreProject = {
 export const moreProjects: MoreProject[] = [
   {
     slug: "bete-dokimas-website",
+    coverImageUrl: "/projects/bete-dokimas-website-1.jpg",
+    screenshots: [
+      "/projects/bete-dokimas-website-1.jpg",
+      "/projects/bete-dokimas-website-2.jpg",
+    ],
     title: "Bete Dokimas — Website",
     summary:
       "Bilingual marketing site with a full self-service admin CMS, migrated to self-hosted infra with zero downtime.",

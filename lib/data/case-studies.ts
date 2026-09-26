@@ -44,6 +44,12 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "bete-dokimas-clients",
+    coverImageUrl: "/projects/bete-dokimas-clients-1.jpg",
+    // bete-dokimas-clients-3.jpg is an empty file; add it here once replaced.
+    screenshots: [
+      "/projects/bete-dokimas-clients-1.jpg",
+      "/projects/bete-dokimas-clients-2.jpg",
+    ],
     initials: "BD",
     pattern: "circles",
     heroColor: "#B5651D",
@@ -105,6 +111,8 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "hiruy-learn",
+    coverImageUrl: "/projects/hiruy-learn-1.jpg",
+    screenshots: ["/projects/hiruy-learn-1.jpg", "/projects/hiruy-learn-2.jpg"],
     initials: "HL",
     pattern: "dots",
     heroColor: "#3B6E5E",
@@ -166,6 +174,11 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "hiruy-platform",
+    coverImageUrl: "/projects/hiruy-platform-1.jpg",
+    screenshots: [
+      "/projects/hiruy-platform-1.jpg",
+      "/projects/hiruy-platform-2.jpg",
+    ],
     initials: "HT",
     pattern: "hex",
     heroColor: "#8A4B2E",

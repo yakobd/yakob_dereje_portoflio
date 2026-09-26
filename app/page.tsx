@@ -1,3 +1,4 @@
+import Image from "next/image";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import CertificateGallery from "@/components/CertificateGallery";
 import ContactForm from "@/components/ContactForm";
@@ -239,12 +240,25 @@ export default function HomePage() {
                 href={`/work/${project.slug}`}
                 className="group flex h-full flex-col overflow-hidden"
               >
-                <ProjectBanner
-                  id={`more-${index}`}
-                  {...bannerFor(project, index)}
-                  className="h-[112px] shrink-0"
-                  initialsClassName="text-3xl"
-                />
+                {project.coverImageUrl ? (
+                  <div className="relative h-[112px] shrink-0 bg-chip">
+                    {/* Decorative: the card title names the project. */}
+                    <Image
+                      src={project.coverImageUrl}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                ) : (
+                  <ProjectBanner
+                    id={`more-${index}`}
+                    {...bannerFor(project, index)}
+                    className="h-[112px] shrink-0"
+                    initialsClassName="text-3xl"
+                  />
+                )}
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-lg font-medium tracking-tight">
                     {project.title}

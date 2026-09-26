@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import ProjectDetail from "@/components/ProjectDetail";
+import ScreenshotGallery from "@/components/ScreenshotGallery";
 import Button from "@/components/ui/Button";
 import Pill from "@/components/ui/Pill";
 import { caseStudies, getCaseStudy } from "@/lib/data/case-studies";
@@ -166,14 +167,16 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           </svg>
         </a>
         {study.coverImageUrl && (
-          <div className="relative mt-12 aspect-[16/10] max-w-5xl overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)]">
+          <div className="mt-12 max-w-5xl overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)]">
+            {/* Natural aspect ratio: the whole screenshot, no cropping. */}
             <Image
               src={study.coverImageUrl}
               alt={`Screenshot of ${study.title}`}
-              fill
+              width={1600}
+              height={900}
               priority
               sizes="(min-width: 1280px) 1024px, 100vw"
-              className="object-cover object-top"
+              className="block h-auto w-full"
             />
           </div>
         )}
@@ -238,6 +241,20 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
             </Block>
           )}
         </div>
+
+        {study.screenshots && study.screenshots.length > 0 && (
+          <section className="max-w-5xl">
+            <h2 className="text-2xl font-normal tracking-tight md:text-3xl">
+              Screenshots
+            </h2>
+            <div className="mt-6">
+              <ScreenshotGallery
+                title={study.title}
+                images={study.screenshots}
+              />
+            </div>
+          </section>
+        )}
 
         <div className="border-t border-border pt-16 text-center">
           <Button href="/#work" variant="secondary">

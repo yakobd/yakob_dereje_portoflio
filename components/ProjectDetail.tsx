@@ -3,6 +3,7 @@ import Link from "next/link";
 import { bannerFor } from "@/lib/banner";
 import type { MoreProject } from "@/lib/data/more-projects";
 import ProjectBanner from "./ProjectBanner";
+import ScreenshotGallery from "./ScreenshotGallery";
 import { Eyebrow } from "./SectionHeader";
 import Button from "./ui/Button";
 import Pill from "./ui/Pill";
@@ -114,26 +115,9 @@ export default function ProjectDetail({ project, index }: ProjectDetailProps) {
             Screenshots
           </h2>
           {screenshots.length > 0 ? (
-            <ul className="mt-6 grid gap-6 sm:grid-cols-2">
-              {screenshots.map((src, i) => (
-                <li key={src}>
-                  <a
-                    href={src}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative block aspect-[16/10] overflow-hidden rounded-xl border border-border bg-chip transition hover:border-border-strong"
-                  >
-                    <Image
-                      src={src}
-                      alt={`${project.title} — screenshot ${i + 1} of ${screenshots.length}`}
-                      fill
-                      sizes="(min-width: 1024px) 512px, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover object-top"
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-6">
+              <ScreenshotGallery title={project.title} images={screenshots} />
+            </div>
           ) : (
             <div className="mt-6 rounded-2xl border border-dashed border-border-strong px-6 py-12 text-center">
               <p className="text-muted">Screenshots coming soon.</p>
