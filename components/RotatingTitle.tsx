@@ -9,13 +9,15 @@ type RotatingTitleProps = {
   interval?: number;
 };
 
+// One step larger than the section eyebrows (text-xs) for more presence in
+// the hero, still well below the H1.
 const eyebrow =
-  "text-xs font-semibold uppercase tracking-[0.18em] text-accent-strong";
+  "text-sm font-semibold uppercase tracking-[0.18em] text-accent-strong sm:text-base";
 
 /**
- * Hero eyebrow that crossfades through the titles. Reduced-motion users get a
- * static line: all titles joined on wider screens, the first title on phones
- * (where the joined line would wrap).
+ * Hero eyebrow that crossfades through the titles. Reduced-motion users see
+ * the first title only: at this size the three joined (~750px) would wrap in
+ * the hero column at every width. Screen readers get all three either way.
  */
 export default function RotatingTitle({
   titles,
@@ -36,8 +38,8 @@ export default function RotatingTitle({
   if (reduceMotion) {
     return (
       <p className={eyebrow}>
-        <span className="sm:hidden">{titles[0]}</span>
-        <span className="hidden sm:inline">{titles.join(" · ")}</span>
+        <span className="sr-only">{titles.join(", ")}</span>
+        <span aria-hidden="true">{titles[0]}</span>
       </p>
     );
   }
