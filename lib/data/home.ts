@@ -5,7 +5,8 @@ export type SocialLink = { label: string; href: string };
 
 export const hero = {
   availability: "Available for freelance & contract work",
-  eyebrow: "AI-Focused Software Engineer",
+  /** Cycled through in the hero eyebrow (static for reduced motion). */
+  titles: ["Software Engineer", "Forward Deployed Engineer", "AI/ML Engineer"],
   heading: "I build production systems where AI does real work — not demos.",
   subhead:
     "Co-Founder & CEO of Hiruy Technologies. I design and ship full-stack platforms, multi-agent systems, and RAG pipelines end to end — architecture, infrastructure, and the code itself.",
@@ -24,7 +25,7 @@ export const about = {
   avatar: "/images/profile2.jpg",
   heading: "Technical founder, still writing the code.",
   paragraphs: [
-    "I'm a software engineer based in Addis Ababa, Ethiopia, and the Co-Founder & CEO of Hiruy Technologies, an AI-powered software development and tech education company. I hold a BSc in Software Engineering from Jimma University and completed 10 Academy's intensive AI Agent Engineering, Evaluation, and Forward Deployed Engineering program with Distinction — top 3% of applicants.",
+    "I'm a software engineer based in Addis Ababa, Ethiopia, focused on forward deployed and AI/ML engineering, and the Co-Founder & CEO of Hiruy Technologies, an AI-powered software development and tech education company. I hold a BSc in Software Engineering from Jimma University and completed 10 Academy's intensive AI Agent Engineering, Evaluation, and Forward Deployed Engineering program with Distinction — top 3% of applicants.",
     "Unlike most CEOs, I'm still the primary engineer on every product I ship — from multi-tenant platforms serving real weddings to multi-agent AI systems. I own the full stack: architecture, database design, infrastructure, and production debugging.",
     "I got into software because I liked watching ideas turn into things people actually use — and AI changed how fast that gap could close. Co-founding Hiruy Technologies let me build that way from day one: own the whole system, ship it, watch real people use it, then go fix what breaks. That's still what I enjoy most about the work.",
   ],

@@ -1,12 +1,13 @@
 import CaseStudyCard from "@/components/CaseStudyCard";
 import CertificateGallery from "@/components/CertificateGallery";
 import ContactForm from "@/components/ContactForm";
+import RotatingTitle from "@/components/RotatingTitle";
 import HeroStats from "@/components/HeroStats";
 import ProjectBanner from "@/components/ProjectBanner";
 import TiltCard from "@/components/TiltCard";
 import ProfilePhoto from "@/components/ProfilePhoto";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
-import SectionHeader, { Eyebrow } from "@/components/SectionHeader";
+import SectionHeader from "@/components/SectionHeader";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Pill from "@/components/ui/Pill";
@@ -58,7 +59,7 @@ export default function HomePage() {
               {hero.availability}
             </span>
             <div className="mt-8">
-              <Eyebrow>{hero.eyebrow}</Eyebrow>
+              <RotatingTitle titles={hero.titles} />
             </div>
             <h1 className="mt-4 max-w-4xl text-balance text-4xl font-normal leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]">
               {hero.heading}
