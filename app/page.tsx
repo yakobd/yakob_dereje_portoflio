@@ -3,6 +3,7 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 import CertificateGallery from "@/components/CertificateGallery";
 import ContactForm from "@/components/ContactForm";
 import RotatingTitle from "@/components/RotatingTitle";
+import SocialLinks from "@/components/SocialLinks";
 import HeroStats from "@/components/HeroStats";
 import ProjectBanner from "@/components/ProjectBanner";
 import TiltCard from "@/components/TiltCard";
@@ -363,20 +364,9 @@ export default function HomePage() {
           >
             {contact.phone.display}
           </a>
-          <ul className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3">
-            {contact.socials.map((social) => (
-              <li key={social.label}>
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-medium text-foreground underline decoration-border-strong underline-offset-4 transition-colors hover:text-accent-strong hover:decoration-accent-strong"
-                >
-                  {social.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-10">
+            <SocialLinks links={contact.socials} />
+          </div>
         </Reveal>
       </Section>
     </>

@@ -1,7 +1,25 @@
 export type Stat = { value: string; label: string };
-export type ProcessStep = { number: string; title: string; description: string };
+export type ProcessStep = {
+  number: string;
+  title: string;
+  description: string;
+};
 export type Testimonial = { quote: string; name: string; role: string };
-export type SocialLink = { label: string; href: string };
+export type SocialLink = {
+  /** Platform name, shown in the tooltip. */
+  label: string;
+  /** Accessible name for the icon-only link. */
+  description: string;
+  href: string;
+  icon:
+    | "github"
+    | "linkedin"
+    | "x"
+    | "telegram"
+    | "instagram"
+    | "upwork"
+    | "substack";
+};
 
 export const hero = {
   availability: "Available for freelance & contract work",
@@ -95,9 +113,47 @@ export const contact = {
   responseTime: "I usually reply within 24 hours.",
   phone: { display: "+251 961 008 600", href: "tel:+251961008600" },
   socials: [
-    { label: "GitHub", href: "https://github.com/yakobd" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/yakob-dereje-negash" },
-    { label: "X / Twitter", href: "https://x.com/dereje_yak45629" },
-    { label: "Substack", href: "https://yakobdereje.substack.com" },
+    {
+      label: "GitHub",
+      description: "GitHub profile",
+      href: "https://github.com/yakobd",
+      icon: "github",
+    },
+    {
+      label: "LinkedIn",
+      description: "LinkedIn profile",
+      href: "https://www.linkedin.com/in/yakob-dereje-61y00",
+      icon: "linkedin",
+    },
+    {
+      label: "X / Twitter",
+      description: "X (Twitter) profile",
+      href: "https://x.com/dereje_yak45629",
+      icon: "x",
+    },
+    {
+      label: "Telegram",
+      description: "Telegram",
+      href: "https://t.me/yakobd",
+      icon: "telegram",
+    },
+    {
+      label: "Instagram",
+      description: "Instagram profile",
+      href: "https://www.instagram.com/jacob_dereje?stkn=MWI5djI1Z2JibzhpMw==",
+      icon: "instagram",
+    },
+    {
+      label: "Upwork",
+      description: "Upwork freelancer profile",
+      href: "https://www.upwork.com/freelancers/~018e5f68cb4b94ac26?mp_source=share",
+      icon: "upwork",
+    },
+    {
+      label: "Substack",
+      description: "Substack newsletter",
+      href: "https://yakobdereje.substack.com",
+      icon: "substack",
+    },
   ] satisfies SocialLink[],
 };
