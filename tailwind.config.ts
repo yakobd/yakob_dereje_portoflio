@@ -27,6 +27,17 @@ const config: Config = {
         // Fixed near-black for text on always-light surfaces (e.g. white pills on color).
         ink: "#221F1C",
       },
+      keyframes: {
+        drift: {
+          "0%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(6%, -5%) scale(1.08)" },
+          "100%": { transform: "translate(-5%, 4%) scale(0.95)" },
+        },
+      },
+      animation: {
+        drift: "drift 14s ease-in-out infinite alternate",
+        "drift-slow": "drift 20s ease-in-out -7s infinite alternate-reverse",
+      },
       fontFamily: {
         heading: ["var(--font-fraunces)", ...defaultTheme.fontFamily.serif],
         sans: ["var(--font-plex-sans)", ...defaultTheme.fontFamily.sans],

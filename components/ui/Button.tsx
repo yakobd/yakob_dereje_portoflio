@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "accent";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-[transform,box-shadow,background-color,border-color,filter] duration-200 ease-out motion-safe:hover:scale-[1.03] hover:shadow-[0_10px_24px_-12px_rgb(0_0_0/0.45)] motion-safe:active:scale-95 active:duration-75 motion-reduce:transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
   primary: "bg-foreground text-background hover:bg-foreground/85",

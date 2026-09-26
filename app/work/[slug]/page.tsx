@@ -148,7 +148,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           href={study.linkUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink transition duration-200 ease-out motion-safe:hover:scale-[1.03] hover:bg-white/90 hover:shadow-[0_10px_24px_-12px_rgb(0_0_0/0.5)] motion-safe:active:scale-95 active:duration-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           {study.linkLabel}
           <svg

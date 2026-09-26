@@ -55,7 +55,7 @@ export default function NavLinks({ links }: { links: NavLink[] }) {
             <Link
               href={link.href}
               aria-current={isActive ? "location" : undefined}
-              className={`relative text-sm font-medium transition-colors hover:text-foreground ${
+              className={`group relative text-sm font-medium transition-colors hover:text-foreground ${
                 isActive ? "text-foreground" : "text-muted"
               }`}
             >
@@ -63,7 +63,9 @@ export default function NavLinks({ links }: { links: NavLink[] }) {
               <span
                 aria-hidden="true"
                 className={`absolute -bottom-1.5 left-0 h-0.5 w-full origin-left rounded-full bg-accent transition-transform duration-300 ease-out motion-reduce:transition-none ${
-                  isActive ? "scale-x-100" : "scale-x-0"
+                  isActive
+                    ? "scale-x-100"
+                    : "scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100"
                 }`}
               />
             </Link>

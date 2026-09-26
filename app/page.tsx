@@ -3,6 +3,7 @@ import CertificateGallery from "@/components/CertificateGallery";
 import ContactForm from "@/components/ContactForm";
 import HeroStats from "@/components/HeroStats";
 import ProjectBanner from "@/components/ProjectBanner";
+import TiltCard from "@/components/TiltCard";
 import ProfilePhoto from "@/components/ProfilePhoto";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 import SectionHeader, { Eyebrow } from "@/components/SectionHeader";
@@ -31,7 +32,16 @@ export default function HomePage() {
         <div aria-hidden="true" className="hero-pattern absolute inset-0" />
         <div className="relative grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-center lg:gap-16 xl:gap-20">
           {/* Photo first on mobile, right column on desktop */}
-          <div className="w-44 sm:w-52 lg:order-last lg:w-full lg:max-w-[460px] lg:justify-self-end">
+          <div className="relative isolate w-44 sm:w-52 lg:order-last lg:w-full lg:max-w-[460px] lg:justify-self-end">
+            {/* Decorative drifting glow behind the photo frame. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-6 -z-10 rounded-full bg-accent/30 blur-3xl animate-drift motion-reduce:animate-none lg:-inset-12"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-8 -left-10 -z-10 h-1/2 w-2/3 rounded-full bg-accent-strong/20 blur-3xl animate-drift-slow motion-reduce:animate-none"
+            />
             <ProfilePhoto
               variant="hero"
               src={about.photo}
@@ -124,7 +134,9 @@ export default function HomePage() {
               <ul className="mt-4 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <li key={skill}>
-                    <Pill>{skill}</Pill>
+                    <Pill className="ring-1 ring-transparent transition duration-200 ease-out hover:ring-border-strong motion-safe:hover:-translate-y-0.5">
+                      {skill}
+                    </Pill>
                   </li>
                 ))}
               </ul>
@@ -147,7 +159,9 @@ export default function HomePage() {
               key={study.slug}
               className={index === 0 ? "md:col-span-2" : undefined}
             >
-              <CaseStudyCard study={study} lead={index === 0} />
+              <TiltCard className="h-full" maxTilt={index === 0 ? 4 : 5}>
+                <CaseStudyCard study={study} lead={index === 0} />
+              </TiltCard>
             </RevealItem>
           ))}
         </RevealGroup>

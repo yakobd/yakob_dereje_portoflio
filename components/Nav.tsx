@@ -27,7 +27,7 @@ export default function Nav() {
           <ThemeToggle className="-mx-2 hidden md:flex" />
           <Link
             href="/#contact"
-            className="rounded-full bg-accent-strong px-5 py-2 text-sm font-medium text-background transition hover:brightness-95"
+            className="rounded-full bg-accent-strong px-5 py-2 text-sm font-medium text-background transition duration-200 ease-out motion-safe:hover:scale-[1.03] hover:shadow-[0_10px_24px_-12px_rgb(0_0_0/0.45)] hover:brightness-95 motion-safe:active:scale-95 active:duration-75"
           >
             Contact
           </Link>
