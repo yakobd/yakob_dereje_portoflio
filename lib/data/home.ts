@@ -108,7 +108,7 @@ export const testimonials = allTestimonials.filter(
 export const contact = {
   heading: "Available for freelance and contract work.",
   details:
-    "Rate: $35–55/hr (or fixed-price by project scope) · Available as needed · Based in Addis Ababa, Ethiopia (EAT)",
+    "Rate: $20–35/hr (or fixed-price by project scope) · Available as needed · Based in Addis Ababa, Ethiopia (EAT)",
   email: "yakobdereje.yd@gmail.com",
   responseTime: "I usually reply within 24 hours.",
   phone: { display: "+251 961 008 600", href: "tel:+251961008600" },
