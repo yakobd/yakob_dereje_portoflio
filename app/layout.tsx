@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, IBM_Plex_Sans } from "next/font/google";
+import CursorGlow from "@/components/CursorGlow";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -69,6 +70,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <ScrollProgress />
+        <CursorGlow />
         <Nav />
         <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
           <MotionProvider>{children}</MotionProvider>
