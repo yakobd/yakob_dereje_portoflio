@@ -1,6 +1,6 @@
 import Image from "next/image";
 import CaseStudyCard from "@/components/CaseStudyCard";
-import CertificateGallery from "@/components/CertificateGallery";
+import CertificateShowcase from "@/components/CertificateShowcase";
 import ContactForm from "@/components/ContactForm";
 import RotatingTitle from "@/components/RotatingTitle";
 import SocialLinks from "@/components/SocialLinks";
@@ -293,38 +293,10 @@ export default function HomePage() {
         <Reveal>
           <SectionHeader
             eyebrow="Credentials"
-            title="Education & certifications."
+            title="Education & certificates."
           />
         </Reveal>
-        <RevealGroup as="ul" className="mt-12 border-t border-border">
-          {credentials.map((credential) => (
-            <RevealItem
-              as="li"
-              key={credential.title}
-              className="flex flex-col gap-2 border-b border-border px-2 py-6 transition-colors hover:bg-background sm:flex-row sm:items-start sm:justify-between sm:gap-8 md:px-4"
-            >
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
-                {credential.imageUrl && (
-                  <CertificateGallery
-                    title={credential.title}
-                    images={[credential.imageUrl, credential.imageUrl2].filter(
-                      (src): src is string => Boolean(src),
-                    )}
-                  />
-                )}
-                <div>
-                  <p className="text-lg font-medium">{credential.title}</p>
-                  <p className="mt-1 text-sm text-muted">{credential.issuer}</p>
-                </div>
-              </div>
-              {credential.date && (
-                <p className="shrink-0 text-sm text-subtle">
-                  {credential.date}
-                </p>
-              )}
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        <CertificateShowcase credentials={credentials} />
       </Section>
 
       {/* Contact */}
