@@ -288,11 +288,11 @@ export default function HomePage() {
         </RevealGroup>
       </Section>
 
-      {/* Credentials */}
-      <Section id="credentials" surface>
+      {/* Certificates */}
+      <Section id="certificates" surface>
         <Reveal>
           <SectionHeader
-            eyebrow="Credentials"
+            eyebrow="Certificates"
             title="Education & certificates."
           />
         </Reveal>

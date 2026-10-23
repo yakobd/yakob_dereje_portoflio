@@ -12,7 +12,7 @@ const sectionToHref: Record<string, string> = {
   work: "/#work",
   "more-work": "/#work",
   skills: "/#skills",
-  credentials: "/#credentials",
+  certificates: "/#certificates",
 };
 
 /** Desktop nav links; highlights the one whose section is in view (home page only). */
