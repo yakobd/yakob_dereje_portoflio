@@ -23,7 +23,7 @@ export const moreProjects: MoreProject[] = [
       "/projects/bete-dokimas-website-1.jpg",
       "/projects/bete-dokimas-website-2.jpg",
     ],
-    title: "Bete Dokimas — Website",
+    title: "Bete Dokimas: Website",
     summary:
       "Bilingual marketing site with a full self-service admin CMS, migrated to self-hosted infra with zero downtime.",
     stack: ["Next.js", "Supabase"],
@@ -39,7 +39,7 @@ export const moreProjects: MoreProject[] = [
     slug: "nablis-ministry-app",
     title: "Nablis Ministry App",
     summary:
-      "Spiritual community platform — Next.js web app and Expo React Native mobile app in one monorepo.",
+      "Spiritual community platform: a Next.js web app and an Expo React Native mobile app in one monorepo.",
     stack: ["Next.js", "Expo", "Firebase"],
   },
   {
@@ -51,7 +51,7 @@ export const moreProjects: MoreProject[] = [
   },
   {
     slug: "dereje-negash-portfolio",
-    title: "Dereje Negash — Accountant Portfolio",
+    title: "Dereje Negash: Accountant Portfolio",
     summary:
       "Professional portfolio site for a certified accountant with services and testimonials.",
     stack: ["Next.js", "Supabase"],

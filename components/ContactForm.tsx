@@ -83,7 +83,7 @@ export default function ContactForm() {
       setStatus("success");
       requestAnimationFrame(() => successRef.current?.focus());
     } catch {
-      setFormError("Network error — please check your connection.");
+      setFormError("Network error. Please check your connection.");
       setStatus("error");
     }
   }
@@ -97,7 +97,7 @@ export default function ContactForm() {
         className="rounded-2xl border border-border bg-surface p-8 text-center outline-none"
       >
         <p className="font-heading text-2xl tracking-tight">
-          Thanks — I&apos;ll get back to you soon.
+          Thanks. I&apos;ll get back to you soon.
         </p>
         <p className="mt-2 text-muted">
           Your message is on its way to my inbox.
@@ -188,7 +188,7 @@ export default function ContactForm() {
           role="alert"
           className="mt-5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800 dark:bg-red-950/40 dark:text-red-300"
         >
-          {formError} Your message is still here — try again, or email me
+          {formError} Your message is still here. Try again, or email me
           directly below.
         </p>
       )}

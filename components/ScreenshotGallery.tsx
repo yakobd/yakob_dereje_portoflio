@@ -17,7 +17,7 @@ export default function ScreenshotGallery({
 }: ScreenshotGalleryProps) {
   const [openAt, setOpenAt] = useState<number | null>(null);
   const altFor = (i: number) =>
-    `${title} — screenshot ${i + 1} of ${images.length}`;
+    `${title}, screenshot ${i + 1} of ${images.length}`;
 
   return (
     <>

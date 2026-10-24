@@ -33,7 +33,7 @@ export function generateStaticParams() {
 function truncate(text: string, maxLength = 155) {
   if (text.length <= maxLength) return text;
   const cut = text.slice(0, maxLength);
-  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[\s,.;:—-]+$/, "")}…`;
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[\s,.;:-]+$/, "")}…`;
 }
 
 export function generateMetadata({ params }: CaseStudyPageProps): Metadata {

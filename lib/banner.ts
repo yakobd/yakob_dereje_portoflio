@@ -26,7 +26,7 @@ const skipWords = new Set(["the", "a", "an", "&", "and", "of"]);
 /** "Kenean Café & Restaurant Platform" -> "KC"; ignores text after an em dash subtitle. */
 export function initialsFrom(title: string) {
   const words = title
-    .split(" — ")[0]
+    .split(": ")[0]
     .split(/\s+/)
     .filter((word) => !skipWords.has(word.toLowerCase()));
   return words

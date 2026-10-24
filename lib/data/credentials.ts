@@ -18,7 +18,7 @@ export type Credential = {
 export const credentials: Credential[] = [
   {
     title:
-      "AI Agent Engineering, Evaluation & Forward Deployed Engineering — with Distinction",
+      "AI Agent Engineering, Evaluation & Forward Deployed Engineering (with Distinction)",
     issuer:
       "10 Academy & Tenacious Intelligence Corp · 720 hrs · Top 3% of applicants",
     date: "May 2026",
@@ -41,7 +41,7 @@ export const credentials: Credential[] = [
       "Jimma University letter confirming Yakob Dereje's BSc in Software Engineering",
   },
   {
-    title: "Internship Certificate — Frontend Flutter Developer",
+    title: "Internship Certificate: Frontend Flutter Developer",
     issuer: "TechBridge",
     date: "November 2024",
     description:
@@ -51,7 +51,7 @@ export const credentials: Credential[] = [
       "TechBridge internship certificate for Yakob Dereje as a Frontend Flutter Developer",
   },
   {
-    title: "Nanodegree — Artificial Intelligence Fundamentals",
+    title: "Nanodegree: Artificial Intelligence Fundamentals",
     issuer: "Udacity",
     date: "December 2025",
     description:
@@ -61,7 +61,7 @@ export const credentials: Credential[] = [
       "Udacity Nanodegree certificate in Artificial Intelligence Fundamentals for Yakob Dereje",
   },
   {
-    title: "Nanodegree — Programming Fundamentals",
+    title: "Nanodegree: Programming Fundamentals",
     issuer: "Udacity",
     date: "December 2025",
     description: "Udacity Nanodegree covering the foundations of programming.",
