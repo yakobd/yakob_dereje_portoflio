@@ -5,4 +5,4 @@ export const siteName = "Yakob Dereje";
 export const siteTitle =
   "Yakob Dereje | Software Engineer, Forward Deployed Engineer & AI/ML Engineer";
 export const siteDescription =
-  "Software Engineer, Forward Deployed Engineer & AI/ML Engineer. Co-Founder & CEO of Hiruy Technologies, building full-stack platforms, multi-agent systems, and RAG pipelines end to end.";
+  "Software Engineer, Forward Deployed Engineer & AI/ML Engineer. Building full-stack platforms, multi-agent systems, and RAG pipelines end to end.";

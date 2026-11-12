@@ -62,7 +62,7 @@ export const caseStudies: CaseStudy[] = [
     problem:
       "Bete Dokimas EOTC Wedding Planners had no digital layer for the weddings they run: invitations, RSVPs, guest photo/wish collection, and internal staff coordination were all manual or paper-based. Two groups needed solving for: guests, who had no way to RSVP or share photos/wishes without a login, and the company itself (admins, coordinators, and couples), who needed one shared system for every client wedding.",
     role: [
-      "Sole technical architect and engineering lead: product owner, system designer, DevOps engineer, and QA, working with an AI coding agent as an implementation partner.",
+      "Sole technical architect: product owner, system designer, DevOps engineer, and QA, working with an AI coding agent as an implementation partner.",
       "Made every architectural and product decision: multi-tenant data model, role/permission design, feature scope, and UX direction.",
       "Owned all infrastructure personally: VPS provisioning, Nginx configuration, PM2, Cloudflare DNS, Let's Encrypt SSL, and a live domain-registrar incident resolved mid-outage.",
       "Performed hands-on verification at every step (real multi-account and multi-device testing) and personally diagnosed and fixed a live production bug during the actual wedding day.",
@@ -189,7 +189,7 @@ export const caseStudies: CaseStudy[] = [
       "The company's production site doubling as an operating system: CRM, finance module, and quote pipeline.",
     stack: ["Next.js 14", "Supabase", "Cloudflare"],
     problem:
-      "Hiruy Technologies needed a website that could run the business as well as present it. The platform handles client inquiries, tracks finances in ETB and USD, manages waitlists for training programs, processes quote requests end to end, and gives the founding team a single dashboard to operate everything without third-party tools.",
+      "Hiruy Technologies needed a website that could run the business as well as present it. The platform handles client inquiries, tracks finances in ETB and USD, manages waitlists for training programs, processes quote requests end to end, and gives the team a single dashboard to operate everything without third-party tools.",
     role: "Designed and built everything solo: architecture decisions, database schema, every component, deployment pipeline, DNS configuration, and email infrastructure. Chose Supabase over a custom backend, chose a self-hosted VPS over managed hosting for cost control, set up Cloudflare to solve Ethiopian ISP blocking, integrated Resend for transactional email, and debugged every production issue personally, including RLS policy failures, UUID coercion bugs, and port conflicts across three co-hosted Next.js apps.",
     fullStack: [
       "Next.js 14 (App Router)",
