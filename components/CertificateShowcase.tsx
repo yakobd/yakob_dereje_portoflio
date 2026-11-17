@@ -95,10 +95,72 @@ function Meta({
   );
 }
 
+type Opener = (credential: Credential, index: number) => void;
+
 /**
- * Education & certificates: the first credential as a full-width featured card
- * (certificate + second image on the left, text on the right), the rest in a
- * 2-column grid. Every image opens the shared lightbox at full size.
+ * Full-width card: certificate image(s) on the left, text on the right; stacks
+ * on smaller screens. With a second image (a landscape certificate plus a
+ * portrait page), the image column is ~55% and the two images sit side by side
+ * at a 2:1 width split so they come out the same height. With one image, the
+ * image column is ~45%.
+ */
+function FeaturedCard({
+  credential,
+  alts,
+  onOpen,
+}: {
+  credential: Credential;
+  alts: string[];
+  onOpen: Opener;
+}) {
+  const two = Boolean(credential.imageUrl2);
+  return (
+    <article
+      className={`grid gap-8 rounded-2xl border border-border bg-background p-5 md:p-8 lg:items-center lg:gap-10 ${
+        two ? "lg:grid-cols-[11fr_9fr]" : "lg:grid-cols-[9fr_11fr]"
+      }`}
+    >
+      <div
+        className={
+          two ? "grid grid-cols-1 items-start gap-3 sm:grid-cols-[2fr_1fr]" : ""
+        }
+      >
+        {credential.imageUrl && (
+          <CertificateImage
+            src={credential.imageUrl}
+            alt={alts[0]}
+            aspect={two ? "1.414" : "1.469"}
+            sizes={
+              two
+                ? "(min-width: 1024px) 480px, (min-width: 640px) 62vw, 100vw"
+                : "(min-width: 1024px) 560px, 100vw"
+            }
+            onOpen={() => onOpen(credential, 0)}
+          />
+        )}
+        {/* On phones the portrait page stacks below, narrower and centred. */}
+        {credential.imageUrl2 && (
+          <div className="mx-auto w-3/5 sm:mx-0 sm:w-full">
+            <CertificateImage
+              src={credential.imageUrl2}
+              alt={alts[1]}
+              aspect="0.707"
+              sizes="(min-width: 1024px) 240px, (min-width: 640px) 31vw, 60vw"
+              onOpen={() => onOpen(credential, 1)}
+            />
+          </div>
+        )}
+      </div>
+      <div>
+        <Meta credential={credential} featured />
+      </div>
+    </article>
+  );
+}
+
+/**
+ * Education & certificates: featured credentials as full-width cards, the rest
+ * in a 2-column grid. Every image opens the shared lightbox at full size.
  */
 export default function CertificateShowcase({
   credentials,
@@ -110,53 +172,29 @@ export default function CertificateShowcase({
     index: number;
   } | null>(null);
 
-  const [featured, ...rest] = credentials;
+  const featured = credentials.filter((c) => c.featured);
+  const rest = credentials.filter((c) => !c.featured);
   const images = (c: Credential) =>
     [c.imageUrl, c.imageUrl2].filter((src): src is string => Boolean(src));
   const alts = (c: Credential) => [
     c.imageAlt ?? c.title,
     c.imageAlt2 ?? c.title,
   ];
-  const open = (credential: Credential, index: number) =>
+  const open: Opener = (credential, index) =>
     setLightbox({ credential, index });
 
   return (
     <>
       <RevealGroup className="mt-12 grid gap-6 md:grid-cols-2">
-        {featured && (
-          <RevealItem className="md:col-span-2">
-            <article className="grid gap-8 rounded-2xl border border-border bg-background p-5 md:p-8 lg:grid-cols-[11fr_9fr] lg:items-center lg:gap-10">
-              {/* Certificate (landscape) and program details (portrait) side
-                  by side: at a 2:1 width split they come out the same height.
-                  On phones they stack, the portrait page narrower and centred. */}
-              <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-[2fr_1fr]">
-                {featured.imageUrl && (
-                  <CertificateImage
-                    src={featured.imageUrl}
-                    alt={alts(featured)[0]}
-                    aspect="1.414"
-                    sizes="(min-width: 1024px) 480px, (min-width: 640px) 62vw, 100vw"
-                    onOpen={() => open(featured, 0)}
-                  />
-                )}
-                {featured.imageUrl2 && (
-                  <div className="mx-auto w-3/5 sm:mx-0 sm:w-full">
-                    <CertificateImage
-                      src={featured.imageUrl2}
-                      alt={alts(featured)[1]}
-                      aspect="0.707"
-                      sizes="(min-width: 1024px) 240px, (min-width: 640px) 31vw, 60vw"
-                      onOpen={() => open(featured, 1)}
-                    />
-                  </div>
-                )}
-              </div>
-              <div>
-                <Meta credential={featured} featured />
-              </div>
-            </article>
+        {featured.map((credential) => (
+          <RevealItem key={credential.title} className="md:col-span-2">
+            <FeaturedCard
+              credential={credential}
+              alts={alts(credential)}
+              onOpen={open}
+            />
           </RevealItem>
-        )}
+        ))}
 
         {rest.map((credential) => (
           <RevealItem key={credential.title}>

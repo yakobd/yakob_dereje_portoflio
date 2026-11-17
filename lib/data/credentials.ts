@@ -4,6 +4,8 @@ export type Credential = {
   /** Omitted when there is no date to show. */
   date?: string;
   description: string;
+  /** Shown as a full-width card above the 2-column grid. */
+  featured?: boolean;
   /** Certificate image, shown in full on the page and enlargeable in a lightbox. */
   imageUrl?: string;
   /** Alt text for imageUrl. */
@@ -14,9 +16,10 @@ export type Credential = {
   imageAlt2?: string;
 };
 
-// The first entry is shown as the full-width featured card.
+// Featured entries come first, as full-width cards in this order.
 export const credentials: Credential[] = [
   {
+    featured: true,
     title:
       "AI Agent Engineering, Evaluation & Forward Deployed Engineering (with Distinction)",
     issuer:
@@ -29,6 +32,17 @@ export const credentials: Credential[] = [
     imageUrl2: "/certificates/10academy-program-details.png",
     imageAlt2:
       "10 Academy program details page listing the topics and assessments covered",
+  },
+  {
+    featured: true,
+    title: "AI/ML Residency Program, Phase 1",
+    issuer: "gheero",
+    date: "September 2026",
+    description:
+      "Completed Phase 1 of gheero's AI/ML Residency Program, which focuses on applying artificial intelligence to real-world problems. Worked in a team on the data cleaning and embedding pipeline for a trainee-to-job recommendation engine and on the feature pipeline for a task-distribution model, and ran an individual research project on Amharic abstractive summarization.",
+    imageUrl: "/certificates/gheero-phase-1-certificate.jpg",
+    imageAlt:
+      "gheero certificate of completion for Phase 1 of the AI/ML Residency Program, presented to Yakob Dereje",
   },
   {
     title: "BSc, Software Engineering",
